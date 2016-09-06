@@ -1,0 +1,962 @@
+﻿<div ng-controller="DefectDetailsController">
+    <ons-page>
+
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Defect Details
+            </div>
+            
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Default Background -->
+        <div style="text-align: center">
+            <br><br>
+            <img src="images/patrol-icon-blue.png" width="30%" height="auto" alt="TLI Logo" />
+            <h4 style="color: #015190">
+                DEFECT DETAILS
+            </h4>
+
+            <!-- Progress indicator -->
+            <div class="progress">
+                <div class="circle done">
+                    <span class="label">1</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">2</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">3</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">4</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">5</span>
+                </div>
+
+                <div class="circle active">
+                    <span class="label">6</span>
+                </div>
+            </div>
+
+            <p class="information-small-grey">
+                Select a defect
+            </p>
+
+            <!--img src="images/information-icon-pink.png" width="12%" height="auto" onclick="informationModal.show('modal')" /-->
+        </div>
+
+        
+
+        <!-- Form Start -->
+        <form class="login-form" style="text-align: left" name="myForm">
+            <!-- Patrol header details -->
+            <section class="form-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Patrol details</p>
+                    </ons-col>
+                </ons-row>
+                
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Patrol ID
+                        </p>
+
+                        <input type="text" class="text-input" placeholder="Patrol ID" value="">
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Transformer
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">1</option>
+                            <option value="usa">2</option>
+                            <option value="usa">3</option>
+                            <option value="usa">4</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Feature Key
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">1</option>
+                            <option value="usa">2</option>
+                            <option value="usa">3</option>
+                            <option value="usa">4</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Pole no.
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">1</option>
+                            <option value="usa">2</option>
+                            <option value="usa">3</option>
+                            <option value="usa">4</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            TLI pole no.
+                        </p>
+
+                        <input type="text" class="text-input" placeholder="TLI pole no.s" value="">
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Pole change
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Yes</option>
+                            <option value="usa">No</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Poling option
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Live line</option>
+                            <option value="usa">Pull and plant</option>
+                            <option value="usa">3</option>
+                            <option value="usa">4</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Height
+                        </p>
+
+                        <input type="text" class="text-input" placeholder="Height" value="">
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Surface type
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Made</option>
+                            <option value="usa">Unmade</option>
+                            <option value="usa">Grass</option>
+                            <option value="usa">Tar FP</option>
+                            <option value="usa">Concrete FP</option>
+                            <option value="usa">Other</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Feature type
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Inter main</option>
+                            <option value="usa">Sect ang main</option>
+                            <option value="usa">Sect ang tee</option>
+                            <option value="usa">Terminal main</option>
+                            <option value="usa">Sect and serv</option>
+                            <option value="usa">Angle main</option>
+                            <option value="usa">Terminal serv</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Machinery req.
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Machine 1</option>
+                            <option value="usa">Machine 2</option>
+                            <option value="usa">Machine 3</option>
+                            <option value="usa">Machine 4</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Mainline conductor change
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Yes</option>
+                            <option value="usa">No</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Existing conductor type
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">1 PH concentric</option>
+                            <option value="usa">3 PH concentric</option>
+                            <option value="usa">2 Wire open wire</option>
+                            <option value="usa">3 Wire open wire</option>
+                            <option value="usa">4 Wire open wire</option>
+                            <option value="usa">2 x 50 ABC</option>
+                            <option value="usa">4 x 50 ABC</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Cable type
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">CU open wire</option>
+                            <option value="usa">Open wire</option>
+                            <option value="usa">Alu open wire</option>
+                            <option value="usa">PVC open wire</option>
+                            <option value="usa">Aerial conc</option>
+                            <option value="usa">PBJ</option>
+                            <option value="usa">PBJ open wire</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Length
+                        </p>
+
+                        <input type="text" class="text-input" placeholder="Length" value="">
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            New conductor type
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">1 PH concentric</option>
+                            <option value="usa">3 PH concentric</option>
+                            <option value="usa">2 Wire open wire</option>
+                            <option value="usa">3 Wire open wire</option>
+                            <option value="usa">4 Wire open wire</option>
+                            <option value="usa">2 x 50 ABC</option>
+                            <option value="usa">4 x 50 ABC</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Conductor length
+                        </p>
+
+                        <input type="text" class="text-input" placeholder="Conductor length" value="">
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Bungalow bracket
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Yes</option>
+                            <option value="usa">No</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Bungalow access greed
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Yes</option>
+                            <option value="usa">No</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Opening notice
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Yes</option>
+                            <option value="usa">No</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Tree cutting
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Not required</option>
+                            <option value="usa">Arborist</option>
+                            <option value="usa">Trimming</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Traffic management
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">3 way traffic lights</option>
+                            <option value="usa">2 way traffic lights</option>
+                            <option value="usa">Stop/go</option>
+                            <option value="usa">Priority</option>
+                            <option value="usa">Tapers</option>
+                            <option value="usa">Give and take</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            BT required
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">BT</option>
+                            <option value="usa">Reclip</option>
+                            <option value="usa">BT on shutdown</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Isolation point
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">Fuses</option>
+                            <option value="usa">Jumpers</option>
+                            <option value="usa">Jumpers - appointment</option>
+                            <option value="usa">Service box</option>
+                            <option value="usa">HV shutdown</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Comments
+                        </p>
+                        <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+                        <br />
+                        <button class="upload-photo-button" onclick="comingSoonInformationModal.show('modal')">Upload Photo</button>
+                        <br />
+                        <span class="information-small-grey">0.0Kb</span>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+            </section>
+
+            <br />
+
+            <!-- Patrol tasks -->
+            <section class="form-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Patrol tasks</p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            1. Rebuild LV Pole, to include excavations, erection, reinstatement ( backfill/ compaction, permasoil) connections, signs, labels and numbers, To include dismantlement and reconnections of existing services
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <ons-row>
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Plan
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+                            
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Action
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+                            
+                            <ons-col width="18%"></ons-col>
+                        </ons-row>
+                    
+                        <ons-row>
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="20%">
+                                <ons-button class="add-comments-button" onclick="showComments()">+ Comments</ons-button>
+                            </ons-col>
+                        </ons-row>
+
+                        <br />
+
+                        <div ng-show="addComments">
+                            <ons-row>
+                                <ons-col>
+                                    <p class="form-field-text">
+                                        Comments
+                                    </p>
+                                    <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+
+                                    <br /><br />
+                                </ons-col>
+                            </ons-row>
+                        </div>
+                    </ons-col>
+                </ons-row>
+
+                <hr class="light" />
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            2. Rebuild Erect LV Service ( Service = 1 property)
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <ons-row>
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Plan
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Action
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="18%"></ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="20%">
+                                <ons-button class="add-comments-button" onclick="showComments()">+ Comments</ons-button>
+                            </ons-col>
+                        </ons-row>
+
+                        <br />
+
+                        <div ng-show="addComments">
+                            <ons-row>
+                                <ons-col>
+                                    <p class="form-field-text">
+                                        Comments
+                                    </p>
+                                    <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+
+                                    <br /><br />
+                                </ons-col>
+                            </ons-row>
+                        </div>
+                    </ons-col>
+                </ons-row>
+
+                <hr class="light" />
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            2a. Fit service bracket in addition to Item 2
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <ons-row>
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Plan
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Action
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="18%"></ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="20%">
+                                <ons-button class="add-comments-button" onclick="showComments()">+ Comments</ons-button>
+                            </ons-col>
+                        </ons-row>
+
+                        <br />
+
+                        <div ng-show="addComments">
+                            <ons-row>
+                                <ons-col>
+                                    <p class="form-field-text">
+                                        Comments
+                                    </p>
+                                    <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+
+                                    <br /><br />
+                                </ons-col>
+                            </ons-row>
+                        </div>
+                    </ons-col>
+                </ons-row>
+
+                <hr class="light" />
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            3. Rebuild Erect LV Main
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <ons-row>
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Plan
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Action
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="18%"></ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="20%">
+                                <ons-button class="add-comments-button" onclick="showComments()">+ Comments</ons-button>
+                            </ons-col>
+                        </ons-row>
+
+                        <br />
+
+                        <div ng-show="addComments">
+                            <ons-row>
+                                <ons-col>
+                                    <p class="form-field-text">
+                                        Comments
+                                    </p>
+                                    <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+
+                                    <br /><br />
+                                </ons-col>
+                            </ons-row>
+                        </div>
+                    </ons-col>
+                </ons-row>
+
+                <hr class="light" />
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            4. Unbind and re-regulate existing single wire conductor up to 120mm (or equivalent)
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <ons-row>
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Plan
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="35%">
+                                <p class="form-field-text">
+                                    Action
+                                </p>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="18%"></ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="36%">
+                                <select id="country" name="hour">
+                                    <option value="usa">1</option>
+                                    <option value="usa">2</option>
+                                    <option value="usa">3</option>
+                                    <option value="usa">4</option>
+                                </select>
+                            </ons-col>
+
+                            <p></p>
+
+                            <ons-col width="20%">
+                                <ons-button class="add-comments-button" onclick="showComments()">+ Comments</ons-button>
+                            </ons-col>
+                        </ons-row>
+
+                        <br />
+
+                        <div ng-show="addComments">
+                            <ons-row>
+                                <ons-col>
+                                    <p class="form-field-text">
+                                        Comments
+                                    </p>
+                                    <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+
+                                    <br /><br />
+                                </ons-col>
+                            </ons-row>
+                        </div>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+            </section>
+
+            <br /><br />
+
+            <section style="padding: 0 8px 8px">
+                <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('vehicle-check-confirmation.html', {animation: 'fade'});">Submit</ons-button>
+            </section>
+
+        </form>
+
+        <br /><br />
+
+
+
+
+
+
+
+        <!-- Displays Coming Soon Modal Information Screen -->
+        <ons-modal var="comingSoonInformationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This feature is currently not available yet.<br><br>
+                                Please check back later for updates.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Choose from any of the <span style="color: #e5514e">defects</span> below to complete.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays No Internect Connection Modal -->
+        <ons-modal var="noInternetConnectionModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                You need an <span style="color: #e5514e">active Internect connection</span> to sync patrol data.<br><br>
+                                Please connect to a <span style="color: #e5514e">Wi-Fi</span> hotspot or make sure you are in a <span style="color: #e5514e">mobile reception</span> area.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="noInternetConnectionModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>
+

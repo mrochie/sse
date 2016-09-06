@@ -1,0 +1,566 @@
+﻿<div ng-controller="PatrolDetailsController">
+    <ons-page>
+
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Patrol Details
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Default Background -->
+        <div style="text-align: center">
+            <br><br>
+            <img src="images/patrol-icon-blue.png" width="30%" height="auto" />
+            <h4 style="color: #015190">
+                PATROL DETAILS
+            </h4>
+
+            <!-- Progress indicator -->
+            <div class="progress">
+                <div class="circle done">
+                    <span class="label">1</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">2</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">3</span>
+                </div>
+
+                <div class="circle active">
+                    <span class="label">4</span>
+                </div>
+
+                <div class="circle">
+                    <span class="label">5</span>
+                </div>
+
+                <div class="circle">
+                    <span class="label">6</span>
+                </div>
+            </div>
+
+            <p class="information-small-grey">
+                Please complete the patrol details
+            </p>
+
+            <!--img src="images/information-icon-pink.png" width="12%" height="auto" onclick="informationModal.show('modal')" /-->
+        </div>
+
+        <!-- Pre-populated information -->
+        <div style="text-align:center">
+            <p class="information-small-grey">
+                Grid Square ID: <span class="information-small-pink">GSID-123-987</span>
+            </p>
+
+            <p class="information-small-grey">
+                Transformer ID: <span class="information-small-pink">TID-123-987</span>
+            </p>
+
+            <p class="information-small-grey">
+                Pole ID: <span class="information-small-pink">TID-123-987</span>
+            </p>
+
+            <p class="information-small-grey">
+                Patroller: <span class="information-small-pink">{{patroller}}</span>
+            </p>
+
+            <p class="information-small-grey">
+                Partol Date: <span class="information-small-pink">12-08-2016</span>
+            </p>
+        </div>
+
+
+        <!-- Form Start -->
+        <form class="login-form" style="text-align: left" name="myForm">
+            <!-- Appointment details -->
+            <section class="form-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Appointment details</p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Power cut duration
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <select id="country" name="duration">
+                            <option value="usa">< 2 Hrs</option>
+                            <option value="usa">2 - 3 Hrs</option>
+                            <option value="usa">4 Hrs</option>
+                            <option value="usa">> 4 Hrs</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Time
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <select id="country" name="time">
+                            <option value="usa">AM</option>
+                            <option value="usa">PM</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Hour
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">1:00</option>
+                            <option value="usa">2:00</option>
+                            <option value="usa">3:00</option>
+                            <option value="usa">4:00</option>
+                            <option value="usa">5:00</option>
+                            <option value="usa">6:30</option>
+                            <option value="usa">7:00</option>
+                            <option value="usa">8:00</option>
+                            <option value="usa">9:00</option>
+                            <option value="usa">10:00</option>
+                            <option value="usa">11:00</option>
+                            <option value="usa">12:00</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Mins
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">00:00</option>
+                            <option value="usa">00:15</option>
+                            <option value="usa">08:30</option>
+                            <option value="usa">08:45</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Date
+                        </p>
+
+                        <select id="country" name="hour">
+                            <option value="usa">1</option>
+                            <option value="usa">2</option>
+                            <option value="usa">3</option>
+                            <option value="usa">4</option>
+                            <option value="usa">5</option>
+                            <option value="usa">6</option>
+                            <option value="usa">7</option>
+                            <option value="usa">8</option>
+                            <option value="usa">9</option>
+                            <option value="usa">10</option>
+                            <option value="usa">11</option>
+                            <option value="usa">12</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Month
+                        </p>
+
+                        <select id="country" name="month">
+                            <option value="usa">Jan</option>
+                            <option value="usa">Feb</option>
+                            <option value="usa">March</option>
+                            <option value="usa">April</option>
+                        </select>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Year
+                        </p>
+
+                        <select id="country" name="year">
+                            <option value="usa">2016</option>
+                            <option value="usa">2017</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Prefered day
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <select id="country" name="day">
+                            <option value="usa">Monday</option>
+                            <option value="usa">Tuesday</option>
+                            <option value="usa">Wednesday</option>
+                            <option value="usa">Thursday</option>
+                            <option value="usa">Friday</option>
+                            <option value="usa">Saturday</option>
+                            <option value="usa">Sunday</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+            </section>
+
+            <br />
+
+            <!-- Land owner details -->
+            <section class="form-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Land owner details</p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Name
+                        </p>
+                        <input type="text" class="text-input" placeholder="Name" value="">
+
+                        <br /><br />
+
+                        <p class="form-field-text">
+                            Contact number (home)
+                        </p>
+                        <input type="text" class="text-input" placeholder="Tel Home" value="">
+
+                        <br /><br />
+
+                        <p class="form-field-text">
+                            Contact number (mobile)
+                        </p>
+                        <input type="text" class="text-input" placeholder="Tel Mobile" value="">
+
+                        <br /><br />
+
+                        <p class="form-field-text">
+                            Email
+                        </p>
+                        <input type="text" class="text-input" placeholder="Email" value="">
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Comments
+                        </p>
+                        <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Status
+                        </p>
+
+                        <select id="country" name="status">
+                            <option value="usa">Landowner</option>
+                            <option value="usa">Tennant</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Meter location
+                        </p>
+
+                        <select id="country" name="status">
+                            <option value="usa">Inside meter</option>
+                            <option value="usa">Outside meter</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Meter access requires
+                        </p>
+
+                        <select id="country" name="status">
+                            <option value="usa">Yes</option>
+                            <option value="usa">No</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+            </section>
+
+            <br />
+
+            <!-- Type of work -->
+            <section class="form-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Work</p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Type of work
+                        </p>
+
+                        <select id="country" name="status">
+                            <option value="usa">Pole change</option>
+                            <option value="usa">Stay completed</option>
+                            <option value="usa">Re-plumb pole</option>
+                            <option value="usa">Underground service</option>
+                            <option value="usa">Service Change</option>
+                        </select>
+
+                        <br /><br />
+
+                        <div ng-if"serviceChange">
+                            <ons-row>
+                                <select id="country" name="status">
+                                    <option value="usa">Renew to meter</option>
+                                    <option value="usa">Join at gable</option>
+                                </select>
+                            </ons-row>
+
+                        </div>
+                    </ons-col>
+
+                    <p></p>
+
+                    <ons-col>
+                        <p class="form-field-text">
+                            Work on property
+                        </p>
+
+                        <select id="country" name="status">
+                            <option value="usa">Pole change</option>
+                            <option value="usa">Stay completed</option>
+                            <option value="usa">Re-plumb pole</option>
+                            <option value="usa">Underground service</option>
+                            <option value="usa">Service Change</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+            </section>
+
+            <br />
+
+            <!-- Type of access -->
+            <section class="form-section">
+                <p class="form-header">
+                    Type of access
+                </p>
+
+                <select id="country" name="country">
+                    <option value="usa">Mini digger</option>
+                    <option value="usa">Auger</option>
+                    <option value="usa">MEWP</option>
+                    <option value="usa">Foot only</option>
+                    <option value="usa">Other</option>
+                </select>
+
+                <br />
+            </section>
+
+            <br />
+
+            <!-- Addiional pole -->
+            <section class="form-section">
+                <p class="form-header">
+                    Additional pole
+                </p>
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">Add additional pole?</p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <section style="padding: 0 8px 8px; text-align: center">
+                            <button class="upload-photo-button" onclick="comingSoonInformationModal.show('modal')">+ Additional pole</button>
+                        </section>
+                    </ons-col>
+                </ons-row>
+            </section>
+
+            <br /><br />
+
+            <section style="padding: 0 8px 8px">
+                <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('vehicle-check-confirmation.html', {animation: 'fade'});">Submit</ons-button>
+            </section>
+
+        </form>
+
+
+
+
+        <p>Select page content template via dropdown</p>
+        
+        <select ng-model="templateselect">
+            <option value="page1">Page 1</option>
+            <option value="page2">Page 2</option>
+        </select>
+        
+        <p>Append page via button click</p>
+        
+        <button ng-click="addTemplate(templateselect)">Add Page</button>
+        
+        <div ng-repeat="template in templates">
+            <ng-include src="template"></ng-include>
+        </div>
+        
+        <script type="text/ng-template" id="page1">
+            <h1 style="color: blue;">This is the page 1 content</h1>
+        </script>
+        
+        <script type="text/ng-template" id="page2">
+            <h1 style="color:green;">This is the page 2 content</h1>
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Please complete the <span style="color: #e5514e">Land Access</span> request details.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Coming Soon Modal Information Screen -->
+        <ons-modal var="comingSoonInformationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This feature is currently not available yet.<br><br>
+                                Please check back later for updates.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>
+
+

@@ -1,0 +1,307 @@
+<div ng-controller="SyncPatrolDataController" data-ng-init="init()">
+    <ons-page>
+        
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Sync Patrol Data
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+        
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/sync-icon-white.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            Sync Patrol Data
+                        </h4>
+                        <p class="page-header-right description">
+                            Select a copleted transformer from the list below to sync back to the server. A active Network connection is required.
+                        </p>
+                        <p class="page-header-right description">
+                            BETA v1.0
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            <br>
+
+            <!-- Download updates -->
+            <!--<ons-row ng-if="online">
+                <ons-col>
+                    <section style="padding: 0 8px 8px">
+                        <ons-button style="text-shadow: none; font-weight:300" var="downloadBtn" modifier="large" ng-click="downloadUpdates();">Download updates</ons-button>
+                    </section>
+                </ons-col>
+            </ons-row>
+
+            <ons-row ng-if="online && downloadingUpdates">
+                <ons-col>
+
+                    <progress max="26" value="{{progress}}" class="html5">
+                        <div class="progress-bar">
+                            <span style="width: 90%">{{progress}}</span>
+                        </div>
+                    </progress>
+                    <p class="progress-bar-tex-message">Items Downloaded: <strong class="progress-bar-tex-message">{{progress}}</strong>/26</p>
+                </ons-col>
+            </ons-row>
+
+            <br />-->
+
+            <!-- Show Patrol data UI if User has Internet connection -->
+            <div ng-if="showPatrolDataUI">
+                <ul class="list">
+                    <li class="list__item list__item--chevron" 
+                        ng-repeat="completedPole in completedPatrolPole"
+                        ng-click="getDetailsAndPushPage(completedPole.pole_key_id, 'sync-patrol-data-details.html')">
+
+                        <ons-row>
+                            <!--ons-col width="80px" class="plan-left">
+                                <div class="plan-date">Assigned</div>
+                                <div class="plan-duration">13.07.2016</div>
+                            </ons-col>
+
+                            <ons-col width="5px" class="plan-center"></ons-col>
+
+                            <ons-col class="plan-right">
+                                <ons-row class="plan-top-row">
+                                    <ons-col width="35%">
+                                        <div class="plan-name">Pole #{{completedPole.pole_key_id}}</div>
+                                    </ons-col>
+
+                                    <ons-col>
+                                        <div class="plan-info">
+                                            <div>
+                                                <ons-icon icon="ion-flash"></ons-icon>Grid Square ID: {{completedPole.pole_key_id}}
+                                                <br />
+                                                <ons-icon icon="ion-person"></ons-icon>Patroller ID: {{completedPole.pole_key_id}}
+                                            </div>
+                                        </div>
+                                    </ons-col>
+                                </ons-row>
+                            </ons-col-->
+
+                            <ons-col class="plan-right">
+                                <ons-row class="plan-top-row">
+                                    <ons-col>
+                                        <div class="plan-name">Pole #{{completedPole.pole_key_id}}</div>
+                                    </ons-col>
+                                </ons-row>
+                            </ons-col>
+                        </ons-row>
+                    </li>
+                </ul>
+
+                <br /><br />
+
+                <section style="padding: 0 8px 8px">
+                    <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px"
+                                var="saveBtn"
+                                modifier="large"
+                                type="submit"
+                                ng-click="myNavigator.pushPage('sync-patrol-data-submit.html', {animation: 'fade'});">Submit</ons-button>
+                </section>
+            </div>
+
+            <!-- Hide Patrol data UI and show error message if User has NO Internet connection -->
+            <div style="text-align: center" ng-if="!showPatrolDataUI">
+                <h6>
+                    ALERT!
+                </h6>
+                <p>
+                    There is currently <strong>NO COMPLETED PATROL DATA</strong> to display.<br /><br />
+                    Please <strong>COMPLETE A PATROL</strong> in order to sync Patrol data back to the TLI Content Management Service.
+                </p>
+
+                <br />
+
+                <!-- If there is a network connection - allow the user to download patrol data -->
+                <section ng-if="online" style="padding: 0 8px 8px; text-align: center">
+                    <p>
+                        Network Status: <span style="color: #E5514E; font-weight: 500">ONLINE</span>
+                    </p>
+                    <br />
+                    <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px;" var="saveBtn" modifier="medium" ng-click="myNavigator.pushPage('grid-square-list.html', {animation: 'slide'});">Complete a Patrol</ons-button>
+                </section>
+
+                <!-- Take User to sync process if no data in localStorage -->
+                <section ng-if="!online" style="padding: 0 8px 8px; text-align: center">
+                    <p>
+                        Network Status: <span style="color: #E5514E; font-weight: 500">OFFLINE</span>
+                    </p>
+                    <br />
+                    <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px;" var="saveBtn" modifier="medium" ng-click="myNavigator.pushPage('grid-square-list.html', {animation: 'slide'});">Complete a Patrol</ons-button>
+                </section>
+            </div>
+
+            <!--form class="login-form" style="text-align: center" name="myForm">
+            <section style="padding: 8px">
+                <input type="text"
+                    class="text-input"
+                    required
+                    minlength="1"
+                    maxlength="10"
+                    ng-model-options="{ debounce : 500 }"
+                    placeholder="Fleet Number ID"
+                    ng-model="fleetIDSearch" >
+            </section>
+
+            <br><br>
+
+            <section style="padding: 0 8px 8px">
+                <ons-button var="saveBtn" ng-disabled="myForm.$invalid" modifier="large" onclick="modal.show('modal')">Check</ons-button>
+            </section>
+        </form-->
+            <!--div ng-if="fleetIDResult">
+            <ons-modal var="modal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Please confirm vehicle details</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+
+                            <p>
+                                TLI Fleet Number ID<br>
+                                <strong style="color: #f76327">{{fleetIDSearch}}</strong>
+                            </p>
+
+                            <p ng-repeat="fleetID in fleetIDs">
+                                <strong>Make: </strong>{{fleetID.make}}<br>
+                                <strong>Model: </strong>{{fleetID.model}}<br>
+                                <strong>Reg No: </strong>{{fleetID.regnumber}}<br>
+                                <strong>Type: </strong>{{fleetID.type}}<br>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--one" ng-click="modal.hide()">Cancel</button>
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="myNavigator.pushPage('fleet-service-main-navigation.html', {animation: 'slide'});" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+        </div-->
+            <!--div ng-if="!fleetIDResult">
+            <ons-modal var="modal">
+                <div class="alert-dialog-mask"></div>
+                <div class="alert-dialog">
+                    <div class="alert-dialog-content">
+                        Your vehicle ID <strong style="color: #f76327">{{fleetIDSearch}}</strong> has not been recognised. <br><br>
+                        Please try again.
+                    </div>
+
+                    <div class="alert-dialog-footer">
+                        <button class="alert-dialog-button alert-dialog-button--primal" ng-click="modal.hide()">Try Again</button>
+                    </div>
+                </div>
+            </ons-modal>
+        </div-->
+
+            </ons-scroller>
+
+                <!-- Displays Coming Soon Modal Information Screen -->
+                <ons-modal var="comingSoonInformationModal">
+                    <div class="alert-dialog-mask"></div>
+
+                    <div class="alert-dialog alert-dialog--android">
+                        <div class="alert-dialog-title alert-dialog-title--android">
+                            <div style="text-align: center">Information</div>
+                        </div>
+
+                        <div class="alert-dialog-content alert-dialog-content--android">
+                            <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                                <p>
+                                    <small>
+                                        The sync process allows you to download your latest Patrol data as well as upload and saved Patrol data completed..<br><br>
+                                        Data sync requires an active Network connection.
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="alert-dialog-footer alert-dialog-footer--one">
+                            <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                        </div>
+                    </div>
+                </ons-modal>
+
+                <!-- Displays Modal Information Screen -->
+                <ons-modal var="informationModal">
+                    <div class="alert-dialog-mask"></div>
+
+                    <div class="alert-dialog alert-dialog--android">
+                        <div class="alert-dialog-title alert-dialog-title--android">
+                            <div style="text-align: center">Information</div>
+                        </div>
+
+                        <div class="alert-dialog-content alert-dialog-content--android">
+                            <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                                <p>
+                                    <small>
+                                        Choose from any of the <span style="color: #e5514e">completed patrols</span> below to sync the data back to the TLI Management System.
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="alert-dialog-footer alert-dialog-footer--one">
+                            <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                        </div>
+                    </div>
+                </ons-modal>
+
+                <!-- Displays No Internect Connection Modal -->
+                <ons-modal var="noInternetConnectionModal">
+                    <div class="alert-dialog-mask"></div>
+
+                    <div class="alert-dialog alert-dialog--android">
+                        <div class="alert-dialog-title alert-dialog-title--android">
+                            <div style="text-align: center">Information</div>
+                        </div>
+
+                        <div class="alert-dialog-content alert-dialog-content--android">
+                            <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                                <p>
+                                    <small>
+                                        You need an <span style="color: #e5514e">active Internect connection</span> to sync patrol data.<br><br>
+                                        Please connect to a <span style="color: #e5514e">Wi-Fi</span> hotspot or make sure you are in a <span style="color: #e5514e">mobile reception</span> area.
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="alert-dialog-footer alert-dialog-footer--one">
+                            <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="noInternetConnectionModal.hide()" )>Ok</button>
+                        </div>
+                    </div>
+                </ons-modal>
+
+    </ons-page>
+</div>
+
+

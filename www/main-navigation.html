@@ -1,0 +1,213 @@
+<div ng-controller="MainNavigationController" data-ng-init="init()">
+    <ons-page>
+        
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.resetToPage('login.html', {animation: 'slide'});">Logout</span>
+            </div>
+            
+            <div class="navigation-bar__center">
+                SSE Patrol
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+        
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+            <!-- Profile card -->
+            <div class="profile-card">
+                <ons-row>
+                    <ons-col style="text-align: center" width="40%"><img src="images/userProfile.png" width="60%"></ons-col>
+                    <ons-col style="text-align: left">
+                        <h4 class="profile-card-username">
+                            {{userName}}
+                        </h4>
+                        <p class="profile-card-user-information">
+                            <strong>Welcome back {{userName}}.</strong><br />
+                            Please select from one of the otpions below.
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            <!-- Bottom navigation bar -->
+            <ons-list style="border-top: none">
+                <ons-list-item style="line-height: 1; padding: 0;">
+                    <ons-row class="action">
+                        <ons-col class="action-col" onclick="networkStatusModal.show('modal')">
+                            <!--ons-col class="action-col" ng-click="myNavigator.pushPage('google-maps.html', {animation: 'slide'});")-->
+                            <div class="action-icon"><ons-icon icon="ion-iphone"></ons-icon></div>
+                            <div class="action-label">
+                                Network status<br />
+                                <!-- Network Status -->
+                                <div style="text-align: center" ng-if="online">
+                                    <p class="information-small-grey"><span class="information-small-pink">ONLINE</span></p>
+                                </div>
+
+                                <div style="text-align: center" ng-if="!online">
+                                    <p class="information-small-grey"><span class="information-small-pink">OFFLINE</span></p>
+                                </div>
+                            </div>
+                        </ons-col>
+
+                        <ons-col class="action-col" ng-click="myNavigator.pushPage('sync-patrol-data.html', {animation: 'slide'});" )>
+                            <div class="action-icon"><ons-icon icon="ion-ios-cloud-upload-outline"></ons-icon></div>
+                            <div class="action-label">
+                                Sync
+                                <!--<span class="information-small-pink">21.07.2016</span>-->
+
+                                <!-- Network Status -->
+                                <div style="text-align: center" ng-if="online">
+                                    <p class="information-small-grey"><span class="information-small-pink">ONLINE</span></p>
+                                </div>
+
+                                <div style="text-align: center" ng-if="!online">
+                                    <p class="information-small-grey"><span class="information-small-pink">OFFLINE</span></p>
+                                </div>
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                </ons-list-item>
+            </ons-list>
+
+            <br>
+
+            <!-- Download updates -->
+            <ons-row ng-if="online">
+                <ons-col>
+                    <!-- Sync button -->
+                    <section style="padding: 0 8px 8px">
+                        <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" var="downloadBtn" modifier="large" ng-click="downloadUpdates();">Download Updates</ons-button>
+                    </section>
+                </ons-col>
+            </ons-row>
+
+            <ons-row ng-if="showProgressBar">
+                <ons-col>
+                    <progress max="25" value="{{progress}}" class="html5">
+                        <div class="progress-bar">
+                            <span style="width: 90%">{{progress}}</span>
+                        </div>
+                    </progress>
+                    <p class="progress-bar-tex-message">Items Downloaded: <strong class="progress-bar-tex-message">{{progress}}</strong>/25</p>
+                </ons-col>
+            </ons-row>
+
+            <br />
+
+            <!-- Main navigation buttons -->
+            <ons-row>
+                <ons-col ng-click="myNavigator.pushPage('grid-square-list.html', {animation: 'slide'});" )>
+                    <div class="main-navigation-button">
+                        <br>
+                        <img src="images/globe.png" width="50%" height="auto" alt="TLI Logo" />
+                        <br><br>
+                        <small>PATROL <span class="notification">0</span></small>
+                    </div>
+                </ons-col>
+
+                <p></p>
+
+                <ons-col onclick="myNavigator.pushPage('add-pole.html', { animation: 'slide' });">
+                    <div class="main-navigation-button">
+                        <br>
+                        <img src="images/add-a-pole-icon.png" width="50%" height="auto" alt="TLI Logo" />
+                        <br><br>
+                        <small>ADD A POLE <span class="notification">--</span></small>
+                    </div>
+                </ons-col>
+            </ons-row>
+
+            <p></p>
+
+            <ons-row>
+                <ons-col onclick="myNavigator.pushPage('additional-class-a.html', { animation: 'slide' });">
+                    <div class="main-navigation-button">
+                        <br>
+                        <img src="images/circles.png" width="50%" height="auto" alt="TLI Logo" />
+                        <br><br>
+                        <small>ADDITIONAL CLASS A <span class="notification">0</span></small>
+                    </div>
+                </ons-col>
+
+                <p></p>
+
+
+                <ons-col onclick="myNavigator.pushPage('land-access-details.html', { animation: 'slide' });">
+                    <div class="main-navigation-button">
+                        <br>
+                        <img src="images/boots.png" width="50%" height="auto" alt="TLI Logo" />
+                        <br><br>
+                        <small>LAND ACCESS <span class="notification">0</span></small>
+                    </div>
+                </ons-col>
+            </ons-row>
+
+            <br />
+
+            
+            <!-- Displays Modal Network Status Screen -->
+            <ons-modal var="networkStatusModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Network Status</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p ng-if="online">
+                                <small>
+                                    Network status.<br><br>
+                                    <strong>ONLINE</strong>
+                                </small>
+                            </p>
+                            <p ng-if="!online">
+                                <small>
+                                    Network status.<br><br>
+                                    <strong>OFFLINE</strong>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="networkStatusModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+            <!-- Displays Modal Information Screen -->
+            <ons-modal var="informationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Coming Soon</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    Please select from one of the options below to complete a Patrol or to sync Patrol data.<br><br>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+        </ons-scroller>
+    </ons-page>
+</div>

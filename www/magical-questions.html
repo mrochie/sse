@@ -1,0 +1,187 @@
+﻿<div ng-controller="MagicalQuestionsController">
+    <ons-page>
+
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Defect Filter
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div ng-include="'fragments/header-fragment.html'"></div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Default Background -->
+        <div style="text-align: center">
+            <br><br>
+            <img src="images/patrol-icon-blue.png" width="30%" height="auto" alt="TLI Logo" />
+            <h4 style="color: #015190">
+                DEFECTS FILTER
+            </h4>
+
+            <!-- Progress indicator -->
+            <div class="progress">
+                <div class="circle done">
+                    <span class="label">1</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">2</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">3</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">4</span>
+                </div>
+
+                <div class="circle active">
+                    <span class="label">5</span>
+                </div>
+
+                <div class="circle">
+                    <span class="label">6</span>
+                </div>
+            </div>
+
+            <p class="information-small-grey">
+                Select a defect
+            </p>
+
+            <!--img src="images/information-icon-pink.png" width="12%" height="auto" onclick="informationModal.show('modal')" /-->
+        </div>
+
+        <br><br>
+
+        <ul class="list">
+            <li class="list__item list__item--chevron" style="color: #E5514E" ng-click="myNavigator.pushPage('defect-details.html', {animation: 'slide'});" )>
+                Defect present
+            </li>
+
+            <li class="list__item list__item--chevron" style="color: #E5514E" ng-click="myNavigator.pushPage('106-defect.html', {animation: 'slide'});")>
+                No defect
+            </li>
+
+            <li class="list__item list__item--chevron" style="color: #E5514E" ng-click="myNavigator.pushPage('106-defect.html', {animation: 'slide'});" )>
+                No solution
+            </li>
+        </ul>
+
+
+
+
+
+
+
+        <!-- Displays Coming Soon Modal Information Screen -->
+        <ons-modal var="comingSoonInformationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This feature is currently not available yet.<br><br>
+                                Please check back later for updates.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Choose from any of the <span style="color: #e5514e">defects</span> below to complete.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays No Internect Connection Modal -->
+        <ons-modal var="noInternetConnectionModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                You need an <span style="color: #e5514e">active Internect connection</span> to sync patrol data.<br><br>
+                                Please connect to a <span style="color: #e5514e">Wi-Fi</span> hotspot or make sure you are in a <span style="color: #e5514e">mobile reception</span> area.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="noInternetConnectionModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>
+

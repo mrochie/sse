@@ -1,0 +1,680 @@
+﻿<div ng-controller="OneZeroSixDefectController" data-ng-init="init()">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                106 Defect
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/106-defect-icon-white-new.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            106 DEFECT
+                        </h4>
+                        <p class="page-header-right description">
+                            Select from the options below to complete the 106 Defect.
+                        </p>
+                        <p class="page-header-right description">
+                            BETA v1.0
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            <br /><br />
+
+            <!-- Deafult Info -->
+            <!-- Details -->
+            <section class="default-info-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Details</p>
+                    </ons-col>
+                </ons-row>
+
+                <!-- Grid Square -->
+                <ons-row>
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Grid Square: <span class="information-small-pink">{{gridSquareID}}</span>
+                        </p>
+                    </ons-col>
+
+                    <!-- Transformer -->
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Transformer: <span class="information-small-pink">{{transformerID}}</span>
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <!-- Pole -->
+                <ons-row>
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Pole: <span class="information-small-pink">{{poleID}}</span>
+                        </p>
+                    </ons-col>
+
+                    <!-- Patroller -->
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Patroller: <span class="information-small-pink">{{userName}}</span>
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </section>
+
+
+            <!-- Form Start -->
+            <form class="login-form" style="text-align: left" name="myForm">
+                <!-- Patrol header details -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">106 Details</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- No Defect/No Solution Option -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                No defect/no solution
+                            </p>
+                            </p>
+                            <select id="" name=""
+                                    ng-model="noDefectNoSolution.noDefectNoSolutionID"
+                                    ng-options="noDefectNoSolutionOption.noDefectNoSolutionID as noDefectNoSolutionOption.noDefectNoSolutionDesc for noDefectNoSolutionOption in NoDefectNoSolution"
+                                    ng-change="changedWIRAValue(noDefectNoSolution.noDefectNoSolutionID, 'NoDefectNoSolution')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!--ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Defect number
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Defect number" value="">
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Site location
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Site location" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Grid square
+                            </p>
+                            <select ng-model="GridSquareArray.idmap"
+                                    data-ng-options="gridSquare.idmap as gridSquare.mapdesc for gridSquare in GridSquareArray"
+                                    ng-change="changedHeaderValue(GridSquareArray.idmap, 'GridSquare')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+                        <p></p>
+
+                        <!--ons-col>
+                            <p class="form-field-text">
+                                Solution
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">1</option>
+                                <option value="usa">2</option>
+                                <option value="usa">3</option>
+                                <option value="usa">4</option>
+                            </select>
+                        </ons-col>
+                    </ons-row-->
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Defect description
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Description" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Insufficient clearance
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Road</option>
+                                <option value="usa">Ground</option>
+                                <option value="usa">Structure</option>
+                                <option value="usa">Driveway</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Actual clearance
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Line to ground</option>
+                                <option value="usa">Line to road</option>
+                                <option value="usa">Line to structure</option>
+                                <option value="usa">Line to tree</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Actual clearance value
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Actual clearance" value="">
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Ambient temperature
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Temperature" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Voltage line
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">275kV</option>
+                                <option value="usa">132kV</option>
+                                <option value="usa">33kV</option>
+                                <option value="usa">22kV</option>
+                                <option value="usa">11kV</option>
+                                <option value="usa">22kV</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Voltage type
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">LV</option>
+                                <option value="usa">Main</option>
+                                <option value="usa">Service</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Conductor
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">1</option>
+                                <option value="usa">2</option>
+                                <option value="usa">3</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                ESQC Risk Code Land
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">A</option>
+                                <option value="usa">B</option>
+                                <option value="usa">C</option>
+                                <option value="usa">D</option>
+                                <option value="usa">E</option>
+                                <option value="usa">F</option>
+                                <option value="usa">G</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                ESQC Risk Code Bare Covered
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">1</option>
+                                <option value="usa">2</option>
+                                <option value="usa">3</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                ESQC Risk Code Vandalism
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">1</option>
+                                <option value="usa">2</option>
+                                <option value="usa">3</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Conductor Type
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">1 PH concentric</option>
+                                <option value="usa">3 PH concentric</option>
+                                <option value="usa">2 Wire open wire</option>
+                                <option value="usa">3 Wire open wire</option>
+                                <option value="usa">4 Wire open wire</option>
+                                <option value="usa">2 x 50 ABC</option>
+                                <option value="usa">4 x 50 ABC</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Defect Identified by
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Patroller" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Signature
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Signature" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <!-- Date -->
+                    <ons-row>
+                        <!-- Date -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Date
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">1</option>
+                                <option value="usa">2</option>
+                                <option value="usa">3</option>
+                                <option value="usa">4</option>
+                                <option value="usa">5</option>
+                                <option value="usa">6</option>
+                                <option value="usa">7</option>
+                                <option value="usa">8</option>
+                                <option value="usa">9</option>
+                                <option value="usa">10</option>
+                                <option value="usa">11</option>
+                                <option value="usa">12</option>
+                                <option value="usa">13</option>
+                                <option value="usa">14</option>
+                                <option value="usa">15</option>
+                                <option value="usa">16</option>
+                                <option value="usa">17</option>
+                                <option value="usa">18</option>
+                                <option value="usa">19</option>
+                                <option value="usa">20</option>
+                                <option value="usa">21</option>
+                                <option value="usa">22</option>
+                                <option value="usa">21</option>
+                                <option value="usa">22</option>
+                                <option value="usa">23</option>
+                                <option value="usa">24</option>
+                                <option value="usa">25</option>
+                                <option value="usa">26</option>
+                                <option value="usa">27</option>
+                                <option value="usa">28</option>
+                                <option value="usa">29</option>
+                                <option value="usa">30</option>
+                                <option value="usa">31</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Month -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Month
+                            </p>
+
+                            <select id="country" name="month">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Jan</option>
+                                <option value="usa">Feb</option>
+                                <option value="usa">March</option>
+                                <option value="usa">April</option>
+                                <option value="usa">May</option>
+                                <option value="usa">June</option>
+                                <option value="usa">July</option>
+                                <option value="usa">Aug</option>
+                                <option value="usa">Sept</option>
+                                <option value="usa">Oct</option>
+                                <option value="usa">Nov</option>
+                                <option value="usa">Dec</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Year -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Year
+                            </p>
+
+                            <select id="country" name="year">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">2016</option>
+                                <option value="usa">2017</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Comments
+                            </p>
+                            <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Land Owner Name
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Name" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Land Owner Address
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Address" value="">
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Land Owner Contact Num
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Contact No." value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Landowner Informed
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Yes</option>
+                                <option value="usa">No</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Speed Limit
+                            </p>
+
+                            <input type="text" class="text-input" placeholder="Speed limit" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                BT On Pole
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Yes</option>
+                                <option value="usa">No</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <!--button class="upload-photo-button" onclick="capturePhoto()">Upload Photo</button-->
+
+                            <a href="" ng-click="showme=true">Upload Photo</a>
+                            <!--button ng-click="showme=false">Hide</button-->
+
+                            <div>
+                                <p ng-hide="showme"></p>
+                                <img src="images/pole-example.jpg" ng-show="showme" width="15%" height="auto" />
+                            </div>
+                        </ons-col>
+                    </ons-row>
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+                    <br />
+                </section>
+
+                <br /><br />
+
+                <section style="padding: 0 8px 8px">
+                    <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('106-defect-confirmation.html', {animation: 'fade'});">Submit</ons-button>
+                </section>
+            </form>
+        </ons-scroller>
+
+            <br /><br />
+
+            <!-- Displays Coming Soon Modal Information Screen -->
+            <ons-modal var="comingSoonInformationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    This feature is currently not available yet.<br><br>
+                                    Please check back later for updates.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+            <!-- Displays Modal Information Screen -->
+            <ons-modal var="informationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    Choose from any of the <span style="color: #e5514e">defects</span> below to complete.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+            <!-- Displays No Internect Connection Modal -->
+            <ons-modal var="noInternetConnectionModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    You need an <span style="color: #e5514e">active Internect connection</span> to sync patrol data.<br><br>
+                                    Please connect to a <span style="color: #e5514e">Wi-Fi</span> hotspot or make sure you are in a <span style="color: #e5514e">mobile reception</span> area.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="noInternetConnectionModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+</ons-page>
+</div>

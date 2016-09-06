@@ -1,0 +1,56 @@
+﻿<!-- Land Access - Type of Work -->
+
+<div ng-controller="LandAccessDetailsController">
+    <!-- Land Access - Type of Work -->
+    <ons-row>
+        <ons-col>
+            <p class="form-header">Type of Work</p>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Type of work
+            </p>
+
+            <select id="country" name="status">
+                <option value="usa">Pole change</option>
+                <option value="usa">Stay completed</option>
+                <option value="usa">Re-plumb pole</option>
+                <option value="usa">Underground service</option>
+                <option value="usa">Service Change</option>
+            </select>
+
+            <br /><br />
+
+            <div ng-if"serviceChange">
+                <ons-row>
+                    <select id="country" name="status">
+                        <option value="usa">Renew to meter</option>
+                        <option value="usa">Join at gable</option>
+                    </select>
+                </ons-row>
+
+            </div>
+        </ons-col>
+
+        <p></p>
+
+        <ons-col>
+            <p class="form-field-text">
+                Work on property
+            </p>
+
+            <select id="country" name="status">
+                <option value="usa">Pole change</option>
+                <option value="usa">Stay completed</option>
+                <option value="usa">Re-plumb pole</option>
+                <option value="usa">Underground service</option>
+                <option value="usa">Service Change</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <br />
+</div>

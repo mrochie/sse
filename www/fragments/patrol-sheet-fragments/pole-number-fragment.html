@@ -1,0 +1,50 @@
+﻿<div ng-controller="TransformerHeaderController">
+    <!-- Pole number -->
+    <ons-row>
+        <ons-col width="95%">
+            <p class="form-header">Pole</p>
+        </ons-col>
+        <ons-col>
+            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- Select current pole -->
+        <ons-col width="80%">
+            <p class="form-field-text">
+                Select pole
+            </p>
+            <select id="country" name="duration">
+                <option value="usa">LV Pole 1 / Pole 1</option>
+                <option value="usa">LV Pole 2 / Not available</option>
+                <option value="usa">LV Pole 3 / Not available</option>
+                <option value="usa">LV Pole 4 / Pole 4</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Add a new pole -->
+        <ons-col>
+            <p class="form-field-text">
+                Add pole
+            </p>
+            <img src="images/plus-icon-blue.png" width="50%" height="auto" onclick="informationModal.show('modal')" />
+        </ons-col>
+    </ons-row>
+
+    <!-- Show editable pole text field -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Add / edit pole
+            </p>
+            <div>
+                <input class="text-input" type="text" placeholder="Pole no." required />
+            </div>
+        </ons-col>
+    </ons-row>
+
+    <br />
+</div>

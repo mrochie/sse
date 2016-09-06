@@ -1,0 +1,103 @@
+﻿<div ng-controller="LandAccessConfirmationController" data-ng-init="init()">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Land Access Submission
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/land-access-icon-white-new.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            Land Access Submission
+                        </h4>
+                        <p class="page-header-right description">
+                            Land Access Submission completed.
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            
+
+
+
+            
+
+            <!-- Form Start -->
+            <form class="login-form" style="text-align: left" name="myForm" novalidate>
+                <!-- Grid square -->
+                <!-- Dont show the patrol form if no data avalable in localStorage -->
+                <div style="text-align: center" ng-if="!showPatrolForm">
+                    <h6>
+                        Success!
+                    </h6>
+                    <p>
+                        Your Land Access form has been successfully submitted.
+                    </p>
+                    <!-- Take User back to Home Screen -->
+                    <section style="padding: 0 8px 8px; text-align: center">
+                        <ons-button var="saveBtn" modifier="medium" ng-click="myNavigator.pushPage('main-navigation.html', {animation: 'fade'});">Back to Home Screen</ons-button>
+                    </section>
+                    
+
+                </div>
+
+                <br /><br /><br />
+
+            </form>
+        </ons-scroller>
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Thank you for your submission</span>.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>
+
+
+

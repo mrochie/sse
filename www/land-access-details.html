@@ -1,0 +1,771 @@
+﻿<div ng-controller="LandAccessDetailsController">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Land Access Details
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/land-access-icon-white-new.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            Land Access Details
+                        </h4>
+                        <p class="page-header-right description">
+                            Select from the details below to complete the Land Access Details form.
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            <!-- Form Start -->
+            <form class="login-form" style="text-align: left" name="myForm">
+
+
+                <!-- Grid square -->
+                <!-- Dont show the patrol form if no data avalable in localStorage -->
+                <div style="text-align: center" ng-if="!showPatrolForm">
+                    <h6>
+                        ALERT!
+                    </h6>
+                    <p>
+                        There is currently no data synced locally to this device to display. Please make sure you have an active Network connetion to sync any assigned patrols to your device.
+                    </p>
+                    <!-- Take User to sync process if no data in localStorage -->
+                    <button class="button--quiet" ng-click="myNavigator.pushPage('sync-patrol-data.html', {animation: 'fade'});">Go to sync process</button>
+                </div>
+
+
+                <!-- Show the patrol form if data avalable in localStorage -->
+                <section class="form-section" ng-if="showPatrolForm">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Grid Square</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Select grid square
+                            </p>
+                            <select ng-model="GridSquareArray.idmap"
+                                    data-ng-options="gridSquare.idmap as gridSquare.mapdesc for gridSquare in GridSquareArray"
+                                    ng-change="changedHeaderValue(GridSquareArray.idmap, 'GridSquare')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Transformer -->
+                <section class="form-section" ng-show="::GridSquareArray.idmap">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Transformer</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Select transformer
+                            </p>
+                            <select ng-model="TransformerArray.idtransformer"
+                                    ng-options="transformer.idtransformer as transformer.transformerdesc for transformer in TransformerArray | filter:{ mapid : GridSquareArray.idmap }"
+                                    ng-change="changedHeaderValue(TransformerArray.idtransformer, 'Transformer')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Pole -->
+                <section class="form-section" ng-show="::TransformerArray.idtransformer">
+                    <!-- Pole number -->
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Pole</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Select current pole -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Select pole
+                            </p>
+                            <select ng-model="PoleArray.polekey"
+                                    ng-options="poleArray.polekey as poleArray.polekey for poleArray in PoleArray | filter:{ idtransformer : TransformerArray.idtransformer }"
+                                    ng-change="changedDetailsValue(PoleArray.polekey, 'Pole')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+
+
+
+
+
+
+
+
+
+                <!-- Appointment details -->
+                <section class="form-section" ng-show="::PoleArray.polekey">
+                    <!-- Land Access - Apointment Details -->
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Appointment Details</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Power cut duration -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Power cut duration
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <select id="country" name="duration">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">< 2 Hrs</option>
+                                <option value="usa">2 - 3 Hrs</option>
+                                <option value="usa">4 Hrs</option>
+                                <option value="usa">> 4 Hrs</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Time -->
+                    <ons-row>
+                        <!-- AM/PM -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Time
+                            </p>
+
+                            <select id="country" name="time">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">AM</option>
+                                <option value="usa">PM</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Hour -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Hour
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">1:00</option>
+                                <option value="usa">2:00</option>
+                                <option value="usa">3:00</option>
+                                <option value="usa">4:00</option>
+                                <option value="usa">5:00</option>
+                                <option value="usa">6:30</option>
+                                <option value="usa">7:00</option>
+                                <option value="usa">8:00</option>
+                                <option value="usa">9:00</option>
+                                <option value="usa">10:00</option>
+                                <option value="usa">11:00</option>
+                                <option value="usa">12:00</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Mins -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Mins
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">00:00</option>
+                                <option value="usa">00:15</option>
+                                <option value="usa">00:30</option>
+                                <option value="usa">00:45</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Date -->
+                    <ons-row>
+                        <!-- Date -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Date
+                            </p>
+
+                            <select id="country" name="hour">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">1</option>
+                                <option value="usa">2</option>
+                                <option value="usa">3</option>
+                                <option value="usa">4</option>
+                                <option value="usa">5</option>
+                                <option value="usa">6</option>
+                                <option value="usa">7</option>
+                                <option value="usa">8</option>
+                                <option value="usa">9</option>
+                                <option value="usa">10</option>
+                                <option value="usa">11</option>
+                                <option value="usa">12</option>
+                                <option value="usa">13</option>
+                                <option value="usa">14</option>
+                                <option value="usa">15</option>
+                                <option value="usa">16</option>
+                                <option value="usa">17</option>
+                                <option value="usa">18</option>
+                                <option value="usa">19</option>
+                                <option value="usa">20</option>
+                                <option value="usa">21</option>
+                                <option value="usa">22</option>
+                                <option value="usa">23</option>
+                                <option value="usa">24</option>
+                                <option value="usa">25</option>
+                                <option value="usa">26</option>
+                                <option value="usa">27</option>
+                                <option value="usa">28</option>
+                                <option value="usa">29</option>
+                                <option value="usa">30</option>
+                                <option value="usa">31</option>
+
+
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Month -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Month
+                            </p>
+
+                            <select id="country" name="month">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Jan</option>
+                                <option value="usa">Feb</option>
+                                <option value="usa">March</option>
+                                <option value="usa">April</option>
+                                <option value="usa">May</option>
+                                <option value="usa">June</option>
+                                <option value="usa">July</option>
+                                <option value="usa">Aug</option>
+                                <option value="usa">Sept</option>
+                                <option value="usa">Oct</option>
+                                <option value="usa">Nov</option>
+                                <option value="usa">Dec</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Year -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Year
+                            </p>
+
+                            <select id="country" name="year">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">2016</option>
+                                <option value="usa">2017</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Prefered day -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Prefered day
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <select id="country" name="day">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Monday</option>
+                                <option value="usa">Tuesday</option>
+                                <option value="usa">Wednesday</option>
+                                <option value="usa">Thursday</option>
+                                <option value="usa">Friday</option>
+                                <option value="usa">Saturday</option>
+                                <option value="usa">Sunday</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Customer details -->
+                <section class="form-section" ng-show="::PoleArray.polekey">
+                    <!-- Land Access - Customer Details -->
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Customer Details</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <!-- Name -->
+                            <p class="form-field-text">
+                                Name
+                            </p>
+                            <input type="text" class="text-input" placeholder="Name" value="">
+
+                            <br />
+
+                            <!-- Email -->
+                            <p class="form-field-text">
+                                Email
+                            </p>
+                            <input type="text" class="text-input" placeholder="Email" value="">
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Comments -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Comments
+                            </p>
+                            <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Tel -->
+                    <ons-row>
+                        <ons-col>
+                            <!-- Tel home -->
+                            <p class="form-field-text">
+                                Home contact number
+                            </p>
+                            <input type="text" class="text-input" placeholder="Home" value="">
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <!-- Tel mobile -->
+                            <p class="form-field-text">
+                                Mobile contact number
+                            </p>
+                            <input type="text" class="text-input" placeholder="Mobile" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Status -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Status
+                            </p>
+
+                            <select id="country" name="status">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Landowner</option>
+                                <option value="usa">Tennant</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Meter -->
+                    <ons-row>
+                        <!-- Meter location -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Meter location
+                            </p>
+
+                            <select id="country" name="status">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Inside meter</option>
+                                <option value="usa">Outside meter</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Meter access required -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Meter access requires
+                            </p>
+
+                            <select id="country" name="status">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Yes</option>
+                                <option value="usa">No</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Type of work -->
+                <section class="form-section" ng-show="::PoleArray.polekey">
+                    <!-- Land Access - Type of Work -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Type of Work</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Type of work
+                            </p>
+
+                            <select id="country" name="status">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Pole change</option>
+                                <option value="usa">Stay completed</option>
+                                <option value="usa">Re-plumb pole</option>
+                                <option value="usa">Underground service</option>
+                                <option value="usa">Service Change</option>
+                            </select>
+
+                            <br /><br />
+
+                            <div ng-if"serviceChange">
+                                <ons-row>
+                                    <select id="country" name="status">
+                                        <option value="usa">-- Please Select --</option>
+                                        <option value="usa">Renew to meter</option>
+                                        <option value="usa">Join at gable</option>
+                                    </select>
+                                </ons-row>
+
+                            </div>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Work on property
+                            </p>
+
+                            <select id="country" name="status">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Pole change</option>
+                                <option value="usa">Stay completed</option>
+                                <option value="usa">Re-plumb pole</option>
+                                <option value="usa">Underground service</option>
+                                <option value="usa">Service Change</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Type of access -->
+                <section class="form-section" ng-show="::PoleArray.polekey">
+                    <!-- Land Access - Type of Access -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Type of Access</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Type of access -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Type of access
+                            </p>
+
+                            <select id="country" name="country">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Mini digger</option>
+                                <option value="usa">Auger</option>
+                                <option value="usa">MEWP</option>
+                                <option value="usa">Foot only</option>
+                                <option value="usa">Other</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Access allowed pre-shutdown -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Access allowed pre-shutdown
+                            </p>
+
+                            <select id="country" name="country">
+                                <option value="usa">-- Please Select --</option>
+                                <option value="usa">Yes</option>
+                                <option value="usa">No</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+                        <!-- Additional Comments -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Comments
+                            </p>
+                            <textarea class="textarea" rows="2" placeholder="Comments"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Access / egress details -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Access / egress details
+                            </p>
+
+                            <a href="" ng-click="showme=true">Upload Photo</a>
+                            <!--button ng-click="showme=false">Hide</button-->
+
+                            <div>
+                                <p ng-hide="showme"></p>
+                                <img src="images/pole-example.jpg" ng-show="showme" width="15%" height="auto" />
+                            </div>
+                        </ons-col>
+
+                        <p></p>
+                        <!-- Additional Comments -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Comments
+                            </p>
+                            <textarea class="textarea" rows="2" placeholder="Comments"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Display the captured image -->
+                    <ons-row>
+                        <ons-col>
+                            <img style="display: none; width: 20%; height: auto" id="smallImage" src="" />
+                            <img style="display: none;" id="largeImage" src="" />
+                            <br />
+                            <span class="information-small-grey">0.0Kb</span>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Additional Comments -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Additional comments
+                            </p>
+                            <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Additional details -->
+                <section class="form-section" ng-show="::PoleArray.polekey">
+                    <!-- Land Access - Additional Details -->
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Additional Details</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <!-- Surveyor name -->
+                            <p class="form-field-text">
+                                Surveyor name
+                            </p>
+                            <input type="text" class="text-input" placeholder="Surveyor" value="">
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <!-- Access officer -->
+                            <p class="form-field-text">
+                                Access officer
+                            </p>
+                            <input type="text" class="text-input" placeholder="Access officer" value="">
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Signature -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Customer consent (please sign)
+                            </p>
+                            <textarea class="textarea" rows="6" placeholder="Please sign"></textarea>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+
+
+
+
+
+
+               
+               
+                <!-- Appointment details>
+                <section-- class="form-section" ng-show="::PoleArray.polekey">
+                    <div ng-include="'fragments/land-access-fragments/appointment-detials-fragment.html'"></div>
+                </section-->
+
+
+                <!-- Customer details >
+                <section-- class="form-section" ng-show="::PoleArray.polekey">
+                    <div ng-include="'fragments/land-access-fragments/customer-details-fragment.html'"></div>
+                </section-->
+
+
+                <!-- Type of work >
+                <section-- class="form-section" ng-show="::PoleArray.polekey">
+                    <div ng-include="'fragments/land-access-fragments/type-of-work-fragment.html'"></div>
+                </section-->
+
+                <!-- Type of access >
+                <section-- class="form-section" ng-show="::PoleArray.polekey">
+                    <div ng-include="'fragments/land-access-fragments/type-of-access-fragment.html'"></div>
+                </section-->
+
+                
+
+                <!-- Additional details >
+                <section class="form-section" ng-show="::PoleArray.polekey">
+                    <div ng-include="'fragments/land-access-fragments/additional-details-fragment.html'"></div>
+                </section-->
+
+                <br /><br />
+
+                <section style="padding: 0 8px 8px" ng-show="::PoleArray.polekey">
+                    <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('land-access-confirmation.html', {animation: 'fade'});">Submit</ons-button>
+                </section>
+
+                <br /><br />
+            </form>
+
+            <br /><br />
+
+            <!-- Displays Modal Information Screen -->
+            <ons-modal var="informationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    Please complete the <span style="color: #e5514e">Land Access</span> request details.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+            <!-- Displays Coming Soon Modal Information Screen -->
+            <ons-modal var="comingSoonInformationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    This feature is currently not available yet.<br><br>
+                                    Please check back later for updates.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+        </ons-scroller>
+
+</ons-page>
+</div>
+
+

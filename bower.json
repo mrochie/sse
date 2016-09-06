@@ -1,0 +1,6 @@
+{
+    "name": "TestEnvironment",
+    "dependencies": {
+        "angular-multiple-select" : "*"
+    }
+}

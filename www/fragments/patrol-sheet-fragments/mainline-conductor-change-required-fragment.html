@@ -1,0 +1,81 @@
+﻿<div ng-controller="TransformerHeaderController">
+    <!-- Mainline conductor change - REQUIRED -->
+    <ons-row>
+        <ons-col width="95%">
+            <p class="form-header">Mainline Conductor Change Required</p>
+        </ons-col>
+        <ons-col>
+            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+        </ons-col>
+    </ons-row>
+
+    <!-- Existing conductor type -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Existing conductor type
+            </p>
+            <select id="country" name="duration">
+                <option value="usa">Type 1</option>
+                <option value="usa">Type 2</option>
+                <option value="usa">Type 3</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <!-- Cable type -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Cable type
+            </p>
+            <select id="country" name="duration">
+                <option value="usa">Cable type 1</option>
+                <option value="usa">Cable type 2</option>
+                <option value="usa">Cable type 3</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <!-- Length -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Length
+            </p>
+            <div>
+                <input class="text-input" type="text" placeholder="Length" required />
+            </div>
+        </ons-col>
+    </ons-row>
+
+    <!-- New conductor type -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                New conductor type
+            </p>
+            <select id="country" name="duration">
+                <option value="usa">Type 1</option>
+                <option value="usa">Type 2</option>
+                <option value="usa">Type 3</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <!-- Service change -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Service change required?
+            </p>
+            <select id="country" name="duration">
+                <option value="usa"></option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <br />
+</div>

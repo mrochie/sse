@@ -1,0 +1,107 @@
+﻿<!-- Land Access - Customer Details -->
+
+<div ng-controller="LandAccessDetailsController">
+    <!-- Land Access - Customer Details -->
+    <ons-row>
+        <ons-col width="95%">
+            <p class="form-header">Customer Details</p>
+        </ons-col>
+        <ons-col>
+            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <!-- Name -->
+            <p class="form-field-text">
+                Name
+            </p>
+            <input type="text" class="text-input" placeholder="Name" value="">
+
+            <br />
+
+            <!-- Email -->
+            <p class="form-field-text">
+                Email
+            </p>
+            <input type="text" class="text-input" placeholder="Email" value="">
+        </ons-col>
+
+        <p></p>
+
+        <!-- Comments -->
+        <ons-col>
+            <p class="form-field-text">
+                Comments
+            </p>
+            <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+        </ons-col>
+    </ons-row>
+
+    <!-- Tel -->
+    <ons-row>
+        <ons-col>
+            <!-- Tel home -->
+            <p class="form-field-text">
+                Home contact number
+            </p>
+            <input type="number" class="text-input" placeholder="Home" value="">
+        </ons-col>
+
+        <p></p>
+
+        <ons-col>
+            <!-- Tel mobile -->
+            <p class="form-field-text">
+                Mobile contact number
+            </p>
+            <input type="number" class="text-input" placeholder="Mobile" value="">
+        </ons-col>
+    </ons-row>
+
+    <!-- Status -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Status
+            </p>
+
+            <select id="country" name="status">
+                <option value="usa">Landowner</option>
+                <option value="usa">Tennant</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <!-- Meter -->
+    <ons-row>
+        <!-- Meter location -->
+        <ons-col>
+            <p class="form-field-text">
+                Meter location
+            </p>
+
+            <select id="country" name="status">
+                <option value="usa">Inside meter</option>
+                <option value="usa">Outside meter</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Meter access required -->
+        <ons-col>
+            <p class="form-field-text">
+                Meter access requires
+            </p>
+
+            <select id="country" name="status">
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <br />
+</div>

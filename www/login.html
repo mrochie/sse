@@ -1,0 +1,203 @@
+<div ng-controller="LoginController" data-ng-init="init()">
+    <ons-page>
+
+        <!-- Navigation Bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left"></div>
+
+            <div class="navigation-bar__center">
+                SSE Login
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+            <!-- Header Logo and Text -->
+            <div style="text-align: center">
+                <img src="images/sse-logo-flat.png" class="landing-page-sse-logo" />
+                <h2 class="page-information-header">
+                    SSE Login
+                </h2>
+            </div>
+
+            <!-- Network Status -->
+            <div style="text-align: center" ng-if="online">
+                <p class="information-small-grey">Network status: <span class="information-small-pink">ONLINE</span></p>
+            </div>
+
+            <div style="text-align: center" ng-if="!online">
+                <p class="information-small-grey">Network status: <span class="information-small-pink">OFFLINE</span></p>
+            </div>
+
+            <br />
+
+            <!-- Login form -->
+            <form class="login" name="loginForm">
+                <fieldset>
+                    <ons-row>
+                        <ons-col width="100%" class="legend">
+                            <!-- Show header information -->
+                            <span ng-if="showLoginUI">Login</span>
+                            <span ng-if="showEmployeeConfirmationUI">Confirm Employee ID</span>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Show login UI -->
+                    <!-- User not in DB and has Network access -->
+                    <div ng-if="showLoginUI">
+                        <div class="input">
+                            <input type="password" 
+                                   placeholder="Employee ID" 
+                                   required 
+                                   ng-model="employeeIDModel.employeeID"/>
+                        </div>
+
+                        <ons-button type="submit"
+                                    class="login-form-submit"
+                                    ng-click="validateLogin()">
+                            <i class="fa fa-lock"></i>
+                        </ons-button>
+                    </div>
+
+                    <!-- User not in DB and no Network access -->
+                    <div ng-if="showNoNetworkAndNoDatabaseValuesErrorMessage">
+                        <p style="text-align:center; padding-bottom: 20px">
+                            There is no User registered with this device and there is currently no active Network connection detected.<br />
+                            You need an active Network connection to login securely to this device.<br /><br />
+                            Please close the application and try again later.
+                        </p>
+                    </div>
+
+                    <!-- User in DB -->
+                    <div ng-if="showEmployeeConfirmationUI">
+                        <p style="text-align:center; padding-top: 20px">
+                            Please confirm your name
+                        </p>
+
+                        <p style="text-align:center; padding-bottom: 10px; color: #E5514E; text-transform: uppercase">
+                            <strong>{{employeeName}}</strong>
+                        </p>
+
+                        <ons-row>
+                            <ons-col style="text-align:left">
+                                <ons-button type="submit"
+                                            class="login-form-submit-decline"
+
+                                            ng-click="declineLogin()">
+                                    <i class="fa fa-times"></i>
+                                </ons-button>
+                            </ons-col>
+                            <ons-col style="float:right">
+                                <ons-button type="submit"
+                                            class="login-form-submit-confirmation"
+                                            ng-click="myNavigator.pushPage('main-navigation.html', {animation: 'slide'});">
+                                    <i class="fa fa-check"></i>
+                                </ons-button>
+                            </ons-col>
+                        </ons-row>
+
+                        <!--button type="submit" class="submit">
+                        <i class="fa fa-long-arrow-right">confirm</i>
+                    </button-->
+                    </div>
+
+                    <!--div class="input">
+                    <input type="password" placeholder="Employee ID" required />
+                </div>
+
+                <div class="input">
+                    <input type="password" placeholder="Password" required />
+                </div>
+
+                <button type="submit" class="submit">
+                    <i class="fa fa-long-arrow-right"></i>
+                </button-->
+                </fieldset>
+            </form>
+        </ons-scroller>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Include the ng-submit="" here to make soft keyboard NOT react to GO button being pressed -->
+            <!--form class="login-form" style="text-align: center" name="myForm" ng-submit="submitLogin()">
+            <section style="padding: 2px">
+                <input type="password"
+                       class="text-input"
+                       required
+                       minlength="3"
+                       maxlength="4"
+                       ng-model-options="{ debounce : 100 }"
+                       placeholder="TLI Employee ID"
+                       ng-model="userIDSearch">
+            </section>
+
+            <br>
+
+            <section style="padding: 0 8px 8px">
+                <ons-button var="saveBtn"
+                            ng-disabled="myForm.$invalid"
+                            modifier="large"
+                            type="submit"
+                            ng-click="validateLogin()">Log In via DB</ons-button>
+
+                <br />
+
+                <ons-button var="saveBtn"
+                ng-disabled="myForm.$invalid"
+                modifier="large"
+                type="submit"
+                ng-click="myNavigator.pushPage('main-navigation.html', {animation: 'slide'});">Log In - Main Navigation</ons-button>
+
+            </section>
+        </form-->
+
+            <br>
+
+            <p class="powered-by">&copy;TLI Rapid &reg;All Rights Reserved</p>
+
+
+            <!-- Displays Modal Information Screen -->
+            <ons-modal var="informationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    The SSE Patrol app alows you to conect to the TLI Group Management System. Please login with your TLI Employee ID.<br /><br />
+                                    Your <span style="color: #E5514E">TLI Employee ID</span> is your unique ID assigned to you by TLI Group.<br /><br />
+                                    <span style="color: #E5514E">* All fields are required</span>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+</ons-page>
+</div>

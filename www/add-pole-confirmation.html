@@ -1,0 +1,152 @@
+﻿<div>
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Add a Pole
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/add-a-pole-icon-white.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            Add a Pole Success
+                        </h4>
+                        <p class="page-header-right description">
+                            Add a Pole Success
+                        </p>
+                        <p class="page-header-right description">
+                            BETA v1.0
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            <!-- Form Start -->
+            <form class="login-form" style="text-align: left" name="myForm" novalidate>
+                <!-- Grid square -->
+                <!-- Dont show the patrol form if no data avalable in localStorage -->
+                <div style="text-align: center" ng-if="!showPatrolForm">
+                    <h6>
+                        Success!
+                    </h6>
+                    <p>
+                        Your new Pole has been successfully submitted.
+                    </p>
+                    <!-- Take User back to Home Screen -->
+                    <section style="padding: 0 8px 8px; text-align: center">
+                        <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" var="saveBtn" modifier="medium" ng-click="myNavigator.pushPage('main-navigation.html', {animation: 'fade'});">Back to Home Screen</ons-button>
+                    </section>
+                </div>
+
+                <br /><br /><br />
+
+            </form>
+        </ons-scroller>
+
+
+        <!-- Displays delete confirmation modal screen -->
+        <ons-modal var="deleteConfirmationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">CAUTION!</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This form section and all associated information will be <span style="color: #e5514e">DELETED</span>.<br><br>
+                                Are you sure you wish to continue with this operation?
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--one" ng-click="deleteConfirmationModal.hide()">Cancel</button>
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="deleteConfirmationModal.hide()">Delete</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Select from the options below to complete the patrol. The form generates content dynamically based on input.</span>.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Coming Soon Modal Information Screen -->
+        <ons-modal var="comingSoonInformationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This feature is currently not available.<br><br>
+                                Please check back later for updates.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>
+
+
+

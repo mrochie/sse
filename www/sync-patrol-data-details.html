@@ -1,0 +1,2160 @@
+﻿<div ng-controller="SyncPatrolDataDetailsController" data-ng-init="init()">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Patrol Details
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/patrol-icon-white-new.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            Patrol Details
+                        </h4>
+                        <p class="page-header-right description">
+                            View details about complete patrol. 
+                        </p>
+                        <p class="page-header-right description">
+                            BETA v1.0
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            <!-- Form Start -->
+            <form class="login-form" style="text-align: left" name="myForm" novalidate>
+                
+                <!-- Deafult Info -->
+                <!-- Details -->
+                <section class="form-section-flat">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Details</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Grid Square -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Grid Square: <span class="information-small-pink">{{gridSquareName}}</span>
+                            </p>
+                        </ons-col>
+
+                        <!-- Transformer -->
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Transformer: <span class="information-small-pink">{{transformerName}}</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Pole -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Pole: <span class="information-small-pink">{{selectedPole}}</span>
+                            </p>
+                        </ons-col>
+
+                        <!-- Patroller -->
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Patroller ID: <span class="information-small-pink">{{patroller}}</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Isolation Point -->
+                <section class="form-section-flat">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Isolation Point</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Isolation Point -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Isolation Point: <span class="information-small-pink">{{isolationPoint}}</span>
+                            </p>
+                        </ons-col>
+
+                        <!-- Isolation Point Comment -->
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Isolation Point Comment: <span class="information-small-pink">{{isolationPointComment}}</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Normally Open Point -->
+                <section class="form-section-flat">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Normally Open Point</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Normally Open Point -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Normally Open Point: <span class="information-small-pink">{{normallyOpenPoint}}</span>
+                            </p>
+                        </ons-col>
+
+                        <!-- Normally Open Point Checked -->
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Normally Open Point Checked: <span class="information-small-pink">{{normallyOpenPointChecked}}</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Normally Open Point Comment -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Normally Open Point Comment: <span class="information-small-pink">{{normallyOpenPointComment}}</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Defect -->
+                <section class="form-section-flat">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Defect / No Defect / No Solution</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Defect -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Defect / No defect / No Solution: <span class="information-small-pink">(Yes)</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Pole Change Required -->
+                <section class="form-section-flat">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Pole Change Required</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Pole Change Required -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Pole Change Required: <span class="information-small-pink">{{poleChangeRequired}}</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Pole change - REQUIRED -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Pole Change Details</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Pole change reason -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Pole change reason <span class="information-small-pink">({{poleChangeReason}})</span>
+                            </p>
+                            <select ng-model="PoleChangeReasonArray.idpolechangereason"
+                                    ng-options="poleChangeReason.idpolechangereason as poleChangeReason.polechangereasondesc for poleChangeReason in PoleChangeReasonArray"
+                                    ng-change="changedDetailsValue(PoleChangeReasonArray.idpolechangereason, 'PoleChangeReason')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Type of pole change -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Pole type <span class="information-small-pink">({{poleType}})</span>
+                            </p>
+                            <select ng-model="PoleTypeArray.idpoletype"
+                                    ng-options="poleType.idpoletype as poleType.poletypedesc for poleType in PoleTypeArray"
+                                    ng-change="changedDetailsValue(PoleTypeArray.idpoletype, 'PoleType')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Poling option -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Poling option <span class="information-small-pink">({{polingOption}})</span>
+                            </p>
+                            <select ng-model="PolingOptionsArray.idpolingoption"
+                                    ng-options="polingOption.idpolingoption as polingOption.polingoptiondesc for polingOption in PolingOptionsArray"
+                                    ng-change="changedDetailsValue(PolingOptionsArray.idpolingoption, 'PolingOptions')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Height -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Height <span class="information-small-pink">({{poleChangeHeight}})</span>
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Height"
+                                      ng-model="height"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Surface type -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Surface type <span class="information-small-pink">({{surfaceType}})</span>
+                            </p>
+                            <select ng-model="SurfaceTypesArray.idsurfacetype"
+                                    ng-options="surfaceType.idsurfacetype as surfaceType.surfacetypedesc for surfaceType in SurfaceTypesArray"
+                                    ng-change="changedDetailsValue(SurfaceTypesArray.idsurfacetype, 'SurfaceType')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Excavation Method -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Excavation method <span class="information-small-pink">({{excavationMethod}})</span>
+                            </p>
+                            <select ng-model="ExcavationMethodArray.idexcavationmethod"
+                                    ng-options="excavationMethod.idexcavationmethod as excavationMethod.excavationmethoddesc for excavationMethod in ExcavationMethodArray"
+                                    ng-change="changedDetailsValue(ExcavationMethodArray.idexcavationmethod, 'ExcavationMethod')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Machinery required -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Machinery required <span class="information-small-pink">({{machineryRequired}})</span>
+                            </p>
+                            <select ng-model="MachineryValuesArray.idmachinery"
+                                    ng-options="machinery.idmachinery as machinery.machinerydesc for machinery in MachineryValuesArray"
+                                    ng-change="changedDetailsValue(MachineryValuesArray.idmachinery, 'MacineryRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Mainline Conductor Change Required -->
+                <section class="form-section-flat">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Mainline Conductor Change Required</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Mainline Conductor Change Required -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Mainline Conductor Change Required: <span class="information-small-pink">{{mainlineConductorChangerequired}}</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Mainline conductor change - REQUIRED -->
+                <section class="form-section" >
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Mainline Conductor Change Details</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Existing conductor type -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Existing conductor type <span class="information-small-pink">({{existingConductorType}})</span>
+                            </p>
+                            <select ng-model="existingConductorType.idconductortype"
+                                    ng-options="existingConductorTypeOption.idconductortype as existingConductorTypeOption.conductortypedesc for existingConductorTypeOption in ConductorTypesArray"
+                                    ng-change="changedDetailsValue(existingConductorType.idconductortype, 'ExistingConductorTypes')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Cable type -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Cable type <span class="information-small-pink">({{cableType}})</span>
+                            </p>
+                            <select ng-model="CableTypesArray.idcabletype"
+                                    ng-options="cableType.idcabletype as cableType.cabletypedesc for cableType in CableTypesArray"
+                                    ng-change="changedDetailsValue(CableTypesArray.idcabletype, 'CableTypes')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Length -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Length <span class="information-small-pink">({{mainlineConductorChangeLength}})</span>
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Length"
+                                      ng-model="length"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- New conductor type -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                New conductor type <span class="information-small-pink">({{newConductorType}})</span>
+                            </p>
+                            <select ng-model="newConductorType.idconductortype"
+                                    ng-options="newConductorTypeOption.idconductortype as newConductorTypeOption.conductortypedesc for newConductorTypeOption in ConductorTypesArray"
+                                    ng-change="changedDetailsValue(newConductorType.idconductortype, 'NewConductorTypes')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Service change -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Service change required?
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="serviceChangeRequired.yesnooptionid"
+                                    ng-options="serviceChangeRequiredOption.yesnooptionid as serviceChangeRequiredOption.yesnooptiondesc for serviceChangeRequiredOption in YesNoOption"
+                                    ng-change="changedDetailsValue(serviceChangeRequired.yesnooptionid, 'ServiceChangeRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Service Change Required -->
+                <section class="form-section-flat">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Service Change Required</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Service Change Required -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Service Change Required: <span class="information-small-pink">{{}}</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Service change - REQUIRED -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Service Change Required</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Number of services -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Number of services <span class="information-small-pink">({{numberOfServices}})</span>
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Number of services"
+                                      ng-model="numberOfServices"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Type 1 -->
+                    <ons-row>
+                        <ons-col width="30%">
+                            <p class="form-field-text">
+                                Length <span class="information-small-pink">({{serviceLengthOne}})</span>
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Length"
+                                      ng-model="quantity1"></textarea>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Type of <span class="information-small-pink">({{serviceTypeOne}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="serviceTypeOne.idservicetype"
+                                    ng-options="serviceTypeOneOption.idservicetype as serviceTypeOneOption.servicetypedesc for serviceTypeOneOption in ServiceTypesArray"
+                                    ng-change="changedDetailsValue(serviceTypeOne.idservicetype, 'ServiceTypeOne')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Type 1 -->
+                    <ons-row>
+                        <ons-col width="30%">
+                            <p class="form-field-text">
+                                Length <span class="information-small-pink">({{serviceLengthTwo}})</span>
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Length"
+                                      ng-model="quantity2"></textarea>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Type of <span class="information-small-pink">({{serviceTypeTwo}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="serviceTypeTwo.idservicetype"
+                                    ng-options="serviceTypeTwoOption.idservicetype as serviceTypeTwoOption.servicetypedesc for serviceTypeTwoOption in ServiceTypesArray"
+                                    ng-change="changedDetailsValue(serviceTypeTwo.idservicetype, 'ServiceTypeTwo')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Address -->
+                    <ons-row>
+                        <!-- House No. -->
+                        <ons-col width="10%">
+                            <p class="form-field-text">
+                                No. <span class="information-small-pink">({{houseNumber}})</span>
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="No"
+                                      ng-model="houesNo"></textarea>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Add street name -->
+                        <ons-col width="60%">
+                            <p class="form-field-text">
+                                Street name <span class="information-small-pink">({{streetAddress}})</span>
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Street name"
+                                      ng-model="streetName"></textarea>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Add details -->
+                        <ons-col width="20%">
+                            <p class="form-field-text">
+                                Add no. / name
+                            </p>
+                            <img src="images/plus-icon-blue.png" width="40%" height="auto" onclick="informationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Land Access Required -->
+                <section class="form-section-flat">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Land Access Required</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Land Access Required -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="information-small-grey">
+                                Land Access Required: <span class="information-small-pink">({{}})</span>
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Mandatory questions -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Additional Information</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- BT transfer required -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                BT transfer required <span class="form-field-text-pink">({{btTransfer}})</span>
+                            </p>
+                            <select ng-model="BTTransferArray.idbttransfer"
+                                    ng-options="btTransferOption.idbttransfer as btTransferOption.bttransferdesc for btTransferOption in BTTransferArray"
+                                    ng-change="changedTasksValue(BTTransferArray.idbttransfer, '1')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Re-plumb pole -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Re-plumb pole <span class="form-field-text-pink">({{replumbPole}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="replumbPole.yesnooptionid"
+                                    ng-options="replumbPoleOption.yesnooptionid as replumbPoleOption.yesnooptiondesc for replumbPoleOption in YesNoOption"
+                                    ng-change="changedTasksValue(replumbPole.yesnooptionid, '2')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Utilise existing pole left by others -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Utilise existing pole left by others <span class="form-field-text-pink">({{utiliseExistingPole}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="poleLeftByOthers.yesnooptionid"
+                                    ng-options="poleLeftByOthersOption.yesnooptionid as poleLeftByOthersOption.yesnooptiondesc for poleLeftByOthersOption in YesNoOption"
+                                    ng-change="changedTasksValue(poleLeftByOthers.yesnooptionid, '3')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Remove existing pole left by others -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Remove existing pole left by others <span class="form-field-text-pink">({{removeExistingPole}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="removePoleLeftByOthers.yesnooptionid"
+                                    ng-options="removePoleLeftByOthersOption.yesnooptionid as removePoleLeftByOthersOption.yesnooptiondesc for removePoleLeftByOthersOption in YesNoOption"
+                                    ng-change="changedTasksValue(removePoleLeftByOthers.yesnooptionid, '4')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Street light transfer -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Street light transfer <span class="form-field-text-pink">({{streetlightTransfer}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="streetLightTransfer.yesnooptionid"
+                                    ng-options="streetLightTransferOption.yesnooptionid as streetLightTransferOption.yesnooptiondesc for streetLightTransferOption in YesNoOption"
+                                    ng-change="changedTasksValue(streetLightTransfer.yesnooptionid, '5')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- PME -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                PME <span class="form-field-text-pink">({{pme}})</span>
+                            </p>
+                            <select ng-model="PMEArray.idpme"
+                                    ng-options="pmeOption.idpme as pmeOption.pmedesc for pmeOption in PMEArray"
+                                    ng-change="changedTasksValue(PMEArray.idpme, '6')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Change stay wire only -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Stay <span class="form-field-text-pink">({{stay}})</span>
+                            </p>
+                            <select ng-model="StayWireArray.idstaywire"
+                                    ng-options="stayWireOption.idstaywire as stayWireOption.staywiredesc for stayWireOption in StayWireArray"
+                                    ng-change="changedTasksValue(StayWireArray.idstaywire, '7')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Unbind and re-regulate existing single conductor -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Unbind and re-regulate existing single conductor <span class="form-field-text-pink">({{unbind}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="unbind.yesnooptionid"
+                                    ng-options="unbindOption.yesnooptionid as unbindOption.yesnooptiondesc for unbindOption in YesNoOption"
+                                    ng-change="changedTasksValue(unbind.yesnooptionid, '8')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Additional single conductors on same span -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Additional single conductors on same span <span class="form-field-text-pink">({{additionalSingleConductor}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="singleConductorsSameSpan.yesnooptionid"
+                                    ng-options="singleConductorsSameSpanOption.yesnooptionid as singleConductorsSameSpanOption.yesnooptiondesc for singleConductorsSameSpanOption in YesNoOption"
+                                    ng-change="changedTasksValue(singleConductorsSameSpan.yesnooptionid, '9')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- PC400 renewed -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                PC400 renewed <span class="form-field-text-pink">({{pc400}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="pc400.yesnooptionid"
+                                    ng-options="pc400Option.yesnooptionid as pc400Option.yesnooptiondesc for pc400Option in YesNoOption"
+                                    ng-change="changedTasksValue(pc400.yesnooptionid, '10')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Fit pole extension bracket -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Fit pole extension bracket <span class="form-field-text-pink">({{poleExtensionBracket}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="poleExtensionBracket.yesnooptionid"
+                                    ng-options="poleExtensionBracketOption.yesnooptionid as poleExtensionBracketOption.yesnooptiondesc for poleExtensionBracketOption in YesNoOption"
+                                    ng-change="changedTasksValue(poleExtensionBracket.yesnooptionid, '11')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Transfer and extend existing U/G service -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Transfer and extend existing U/G service <span class="form-field-text-pink">({{transfereExistingUGService}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="ugService.yesnooptionid"
+                                    ng-options="ugServiceOption.yesnooptionid as ugServiceOption.yesnooptiondesc for ugServiceOption in YesNoOption"
+                                    ng-change="changedTasksValue(ugService.yesnooptionid, '12')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- LV straight joint -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                LV straight joint <span class="form-field-text-pink">({{lvStraighJoint}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="lvStraightJoint.yesnooptionid"
+                                    ng-options="lvStraightJointOption.yesnooptionid as lvStraightJointOption.yesnooptiondesc for lvStraightJointOption in YesNoOption"
+                                    ng-change="changedTasksValue(lvStraightJoint.yesnooptionid, '13')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row ng-show="lvStraightJoint.yesnooptionid == 1">
+                        <!-- LV joint bay in made surface -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                LV joint bay <span class="form-field-text-pink">Lorem Ipsum</span>
+                            </p>
+                            <select ng-model="JointBayArray.idjointbay"
+                                    ng-options="jointBayOption.idjointbay as jointBayOption.jointbaydesc for jointBayOption in JointBayArray"
+                                    ng-change="changedTasksValue(JointBayArray.idjointbay, '14')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Make and erect LV pole term -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Make and erect LV pole term <span class="form-field-text-pink">Lorem Ipsum</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="lvPoleTerm.yesnooptionid"
+                                    ng-options="lvPoleTermOption.yesnooptionid as lvPoleTermOption.yesnooptiondesc for lvPoleTermOption in YesNoOption"
+                                    ng-change="changedTasksValue(lvPoleTerm.yesnooptionid, '16')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+                    </ons-row>
+
+                    <ons-row ng-show="JointBayArray.idjointbay == 1">
+                        <!-- LV joint bay comment -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                LV joint bay comment <span class="form-field-text-pink">Lorem Ipsum</span>
+                            </p>
+                            <div>
+                                <input class="text-input" type="text" placeholder="Comment" required />
+                            </div>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- LV outage -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                LV outage <span class="form-field-text-pink">({{lvOutage}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="lvOutage.yesnooptionid"
+                                    ng-options="lvOutageOption.yesnooptionid as lvOutageOption.yesnooptiondesc for lvOutageOption in YesNoOption"
+                                    ng-change="changedTasksValue(lvOutage.yesnooptionid, '17')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- HV outage -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                HV outage <span class="form-field-text-pink">({{hvOutage}})</span>
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="hvOutage.yesnooptionid"
+                                    ng-options="hvOutageOption.yesnooptionid as hvOutageOption.yesnooptiondesc for hvOutageOption in YesNoOption"
+                                    ng-change="changedTasksValue(hvOutage.yesnooptionid, '18')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Tree cutting -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Tree cutting <span class="form-field-text-pink">({{treeCutting}})</span>
+                            </p>
+                            <select ng-model="TreeCuttingArray.idtreecutting"
+                                    ng-options="treeCuttingOption.idtreecutting as treeCuttingOption.treecuttingdesc for treeCuttingOption in TreeCuttingArray"
+                                    ng-change="changedTasksValue(TreeCuttingArray.idtreecutting, '19')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <br />
+
+                <!-- Transformer -->
+                <section class="form-section" ng-show="::GridSquareArray.idmap">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Transformer</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Select transformer
+                            </p>
+                            <select ng-model="TransformerArray.idtransformer"
+                                    ng-options="transformer.idtransformer as transformer.transformerdesc for transformer in TransformerArray | filter:{ mapid : GridSquareArray.idmap }"
+                                    ng-change="changedHeaderValue(TransformerArray.idtransformer, 'Transformer')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Isolation point -->
+                <section class="form-section" ng-show="::TransformerArray.idtransformer">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Isolation Point</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Isolation point
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <select ng-model="IsolationPointsArray.idisolationpoint"
+                                    ng-options="islationPoint.idisolationpoint as islationPoint.isolationpointdesc for islationPoint in IsolationPointsArray"
+                                    ng-change="changedHeaderValue(IsolationPointsArray.idisolationpoint, 'IsolationPoint')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Isolation point comments
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <textarea class="textarea"
+                                      rows="3"
+                                      placeholder="Comments"
+                                      ng-model="isolationPointComments"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Isolation point photo
+                            </p>
+
+                            <a href="" ng-click="showme1=true">Upload Photo</a>
+                            <!--button ng-click="showme=false">Hide</button-->
+
+                            <div>
+                                <p ng-hide="showme1"></p>
+                                <img src="images/image2.JPG" ng-show="showme1" width="15%" height="auto" />
+                            </div>
+
+                            <span class="information-small-grey">0.0Kb</span>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Normally open point -->
+                <section class="form-section" ng-show="::TransformerArray.idtransformer">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Normally Open Point</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Normally open point
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <select id="country" name="duration"
+                                    ng-model="normallyOpenPoint.yesnooptionid"
+                                    ng-options="normallyOpenPointOption.yesnooptionid as normallyOpenPointOption.yesnooptiondesc for normallyOpenPointOption in YesNoOption"
+                                    ng-change="changedHeaderValue(normallyOpenPoint.yesnooptionid, 'NormallyOpenPoint')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Normally open point checked
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <select id="country" name="duration"
+                                    ng-model="normallyOpenPointChecked.yesnooptionid"
+                                    ng-options="normallyOpenPointCheckedOption.yesnooptionid as normallyOpenPointCheckedOption.yesnooptiondesc for normallyOpenPointCheckedOption in YesNoOption"
+                                    ng-change="changedHeaderValue(normallyOpenPointChecked.yesnooptionid, 'NormallyOpenPointChecked')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Normally open point comments
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <textarea class="textarea"
+                                      rows="3"
+                                      placeholder="Comments"
+                                      ng-model="normallyOpenPointComments"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Normally open point photo
+                            </p>
+
+                            <!--button class="upload-photo-button" onclick="capturePhoto()">Upload Photo</button-->
+                            <!--button class="upload-photo-button" id="img-clck">Upload Photo</button-->
+
+
+                            <br /><br />
+
+
+                            <a href="" ng-click="showme=true">Upload Photo</a>
+                            <!--button ng-click="showme=false">Hide</button-->
+
+                            <div>
+                                <p ng-hide="showme"></p>
+                                <img src="images/pole-example.jpg" ng-show="showme" width="15%" height="auto" />
+                            </div>
+
+
+
+
+
+
+
+
+                            <!-- Display the captured image -->
+                            <!--ons-row>
+                                <ons-col>
+                                    <img style="display: none; width: 20%; height: auto" id="smallImage" src="" />
+                                    <img style="display: none;" id="largeImage" src="" />
+                                </ons-col>
+                            </ons-row>
+
+                            <span class="information-small-grey">0.0Kb</span-->
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+
+
+
+
+
+
+                <!-- ******************** TEST ******************** -->
+                <!--section style="padding: 0 8px 8px">
+                    <ons-button var="saveBtn"
+                                modifier="large"
+                                type="submit"
+                                ng-click="submitHeaderData()">Submit Header Data</ons-button>
+                </section-->
+
+
+
+                <br />
+
+
+
+                <!-- Pole -->
+                <section class="form-section" ng-show="::TransformerArray.idtransformer">
+                    <!-- Pole number -->
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Pole</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Select current pole -->
+                        <ons-col width="80%">
+                            <p class="form-field-text">
+                                Select pole
+                            </p>
+                            <!-- Display both Pole Number and Key-->
+                            <select ng-model="PoleArray.polekey"
+                                    ng-options="poleArray.polekey as poleArray.polekey + ' (' + poleArray.polenum + ')'  for poleArray in PoleArray | filter:{ idtransformer : TransformerArray.idtransformer }"
+                                    ng-change="changedDetailsValue(PoleArray.polekey, 'Pole')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Add a new pole -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Add pole
+                            </p>
+                            <img src="images/plus-icon-blue.png" width="50%" height="auto" onclick="comingSoonInformationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Show editable pole text field -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Add / edit pole
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="{{PoleArray.polenum}}"
+                                      ng-model="PoleArray.polekey"></textarea>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Magic questions -->
+                <section class="form-section" ng-show="::PoleArray.polekey">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Defect / No Defect / No Solution</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Defect / No Defect / No Solution
+                            </p>
+                            <select id="country" name="duration" ng-model="defect_noDefect_noSolution_option">
+                                <option value="n/a">-- Please Select --</option>
+                                <option value="defect">Defect</option>
+                                <option value="noDefect">No Defect</option>
+                                <option value="noSolution">No Solution</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Show 106 transition button if No Defect/No Solution -->
+                <section style="padding: 0 8px 8px" ng-show="defect_noDefect_noSolution_option == 'noDefect' || defect_noDefect_noSolution_option == 'noSolution'">
+                    <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('106-defect.html', {animation: 'fade'});">106 DEFECT</ons-button>
+                </section>
+
+                <!-- Pole change required -->
+                <section class="form-section" ng-show="defect_noDefect_noSolution_option == 'defect'">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Pole Change</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Pole change required?
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="poleChangeRequired.yesnooptionid"
+                                    ng-options="poleChangeRequiredOption.yesnooptionid as poleChangeRequiredOption.yesnooptiondesc for poleChangeRequiredOption in YesNoOption"
+                                    ng-change="changedDetailsValue(poleChangeRequired.yesnooptionid, 'PoleChangeRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Pole change - REQUIRED -->
+                <section class="form-section" ng-show="poleChangeRequired.yesnooptionid == 1 && defect_noDefect_noSolution_option == 'defect'">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Pole Change Details</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Pole change reason -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Pole change reason
+                            </p>
+                            <select ng-model="PoleChangeReasonArray.idpolechangereason"
+                                    ng-options="poleChangeReason.idpolechangereason as poleChangeReason.polechangereasondesc for poleChangeReason in PoleChangeReasonArray"
+                                    ng-change="changedDetailsValue(PoleChangeReasonArray.idpolechangereason, 'PoleChangeReason')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Type of pole change -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Pole type
+                            </p>
+                            <select ng-model="PoleTypeArray.idpoletype"
+                                    ng-options="poleType.idpoletype as poleType.poletypedesc for poleType in PoleTypeArray"
+                                    ng-change="changedDetailsValue(PoleTypeArray.idpoletype, 'PoleType')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Poling option -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Poling option
+                            </p>
+                            <select ng-model="PolingOptionsArray.idpolingoption"
+                                    ng-options="polingOption.idpolingoption as polingOption.polingoptiondesc for polingOption in PolingOptionsArray"
+                                    ng-change="changedDetailsValue(PolingOptionsArray.idpolingoption, 'PolingOptions')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Height -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Height
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Height"
+                                      ng-model="height"></textarea>
+
+                            <!--input class="text-input"
+                                   type="number"
+                                   placeholder="Height"
+                                   value=""
+                                   ng-model="height"-->
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Surface type -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Surface type
+                            </p>
+                            <select ng-model="SurfaceTypesArray.idsurfacetype"
+                                    ng-options="surfaceType.idsurfacetype as surfaceType.surfacetypedesc for surfaceType in SurfaceTypesArray"
+                                    ng-change="changedDetailsValue(SurfaceTypesArray.idsurfacetype, 'SurfaceType')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Excavation Method -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Excavation method
+                            </p>
+                            <select ng-model="ExcavationMethodArray.idexcavationmethod"
+                                    ng-options="excavationMethod.idexcavationmethod as excavationMethod.excavationmethoddesc for excavationMethod in ExcavationMethodArray"
+                                    ng-change="changedDetailsValue(ExcavationMethodArray.idexcavationmethod, 'ExcavationMethod')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Machinery required -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Machinery required
+                            </p>
+                            <select ng-model="MachineryValuesArray.idmachinery"
+                                    ng-options="machinery.idmachinery as machinery.machinerydesc for machinery in MachineryValuesArray"
+                                    ng-change="changedDetailsValue(MachineryValuesArray.idmachinery, 'MacineryRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Mainline conductor change -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Mainline conductor change required?
+                            </p>
+                            <!--select ng-model="selectedMainlineConductorChangeVal" ng-options="k as v for (k, v) in mainline_conductor_change_option"></select-->
+                            <select id="country" name="duration"
+                                    ng-model="mainlineConductorChangeRequired.yesnooptionid"
+                                    ng-options="mainlineConductorChangeRequiredOption.yesnooptionid as mainlineConductorChangeRequiredOption.yesnooptiondesc for mainlineConductorChangeRequiredOption in YesNoOption"
+                                    ng-change="changedDetailsValue(mainlineConductorChangeRequired.yesnooptionid, 'MainlineConductorChangeRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Pole change - NOT REQUIRED -->
+                <section class="form-section" ng-show="poleChangeRequired.yesnooptionid == 0">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Mainline Conductor Change</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Mainline conductor change -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Mainline conductor change required?
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="mainlineConductorChangeRequired.yesnooptionid"
+                                    ng-options="mainlineConductorChangeRequiredOption.yesnooptionid as mainlineConductorChangeRequiredOption.yesnooptiondesc for mainlineConductorChangeRequiredOption in YesNoOption"
+                                    ng-change="changedDetailsValue(mainlineConductorChangeRequired.yesnooptionid, 'MainlineConductorChangeRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Mainline conductor change - REQUIRED -->
+                <section class="form-section" ng-show="mainlineConductorChangeRequired.yesnooptionid == 1 && defect_noDefect_noSolution_option == 'defect'">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Mainline Conductor Change Details</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Existing conductor type -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Existing conductor type
+                            </p>
+                            <select ng-model="existingConductorType.idconductortype"
+                                    ng-options="existingConductorTypeOption.idconductortype as existingConductorTypeOption.conductortypedesc for existingConductorTypeOption in ConductorTypesArray"
+                                    ng-change="changedDetailsValue(existingConductorType.idconductortype, 'ExistingConductorTypes')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Cable type -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Cable type
+                            </p>
+                            <select ng-model="CableTypesArray.idcabletype"
+                                    ng-options="cableType.idcabletype as cableType.cabletypedesc for cableType in CableTypesArray"
+                                    ng-change="changedDetailsValue(CableTypesArray.idcabletype, 'CableTypes')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Length -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Length
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Length"
+                                      ng-model="length"></textarea>
+
+                            <!--input class="text-input"
+                                   type="number"
+                                   placeholder="Length"
+                                   value=""
+                                   ng-model="length"-->
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- New conductor type -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                New conductor type
+                            </p>
+                            <select ng-model="newConductorType.idconductortype"
+                                    ng-options="newConductorTypeOption.idconductortype as newConductorTypeOption.conductortypedesc for newConductorTypeOption in ConductorTypesArray"
+                                    ng-change="changedDetailsValue(newConductorType.idconductortype, 'NewConductorTypes')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Service change -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Service change required?
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="serviceChangeRequired.yesnooptionid"
+                                    ng-options="serviceChangeRequiredOption.yesnooptionid as serviceChangeRequiredOption.yesnooptiondesc for serviceChangeRequiredOption in YesNoOption"
+                                    ng-change="changedDetailsValue(serviceChangeRequired.yesnooptionid, 'ServiceChangeRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Mainline conductor change - NOT REQUIRED -->
+                <section class="form-section" ng-show="mainlineConductorChangeRequired.yesnooptionid == 0 && defect_noDefect_noSolution_option == 'defect'">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Service Change</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Service change -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Service change required?
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="serviceChangeRequired.yesnooptionid"
+                                    ng-options="serviceChangeRequiredOption.yesnooptionid as serviceChangeRequiredOption.yesnooptiondesc for serviceChangeRequiredOption in YesNoOption"
+                                    ng-change="changedDetailsValue(serviceChangeRequired.yesnooptionid, 'ServiceChangeRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Service change - REQUIRED -->
+                <section class="form-section" ng-show="serviceChangeRequired.yesnooptionid == 1 && defect_noDefect_noSolution_option == 'defect'">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Service Change Required</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Number of services -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Number of services
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Number of services"
+                                      ng-model="numberOfServices"></textarea>
+
+                            <!--input class="text-input"
+                                   type="number"
+                                   placeholder="Number of services"
+                                   value=""
+                                   ng-model="numberOfServices"-->
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Type 1 -->
+                    <ons-row>
+                        <ons-col width="30%">
+                            <p class="form-field-text">
+                                Quantity
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Quantity"
+                                      ng-model="quantity1"></textarea>
+
+                            <!--input class="text-input"
+                                   type="number"
+                                   placeholder="Quantity"
+                                   value=""
+                                   ng-model="quantity1"-->
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Type of
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="serviceTypeOne.idservicetype"
+                                    ng-options="serviceTypeOneOption.idservicetype as serviceTypeOneOption.servicetypedesc for serviceTypeOneOption in ServiceTypesArray"
+                                    ng-change="changedDetailsValue(serviceTypeOne.idservicetype, 'ServiceTypeOne')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Type 1 -->
+                    <ons-row>
+                        <ons-col width="30%">
+                            <p class="form-field-text">
+                                Quantity
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Quantity"
+                                      ng-model="quantity2"></textarea>
+
+                            <!--input class="text-input"
+                                   type="number"
+                                   placeholder="Quantity"
+                                   value=""
+                                   ng-model="quantity2"-->
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Type of
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="serviceTypeTwo.idservicetype"
+                                    ng-options="serviceTypeTwoOption.idservicetype as serviceTypeTwoOption.servicetypedesc for serviceTypeTwoOption in ServiceTypesArray"
+                                    ng-change="changedDetailsValue(serviceTypeTwo.idservicetype, 'ServiceTypeTwo')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Address -->
+                    <ons-row>
+                        <!-- House No. -->
+                        <ons-col width="10%">
+                            <p class="form-field-text">
+                                No.
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="No"
+                                      ng-model="houesNo"></textarea>
+
+                            <!--input class="text-input"
+                                   type="number"
+                                   placeholder="No."
+                                   value=""
+                                   ng-model="houesNo"-->
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Add street name -->
+                        <ons-col width="60%">
+                            <p class="form-field-text">
+                                Street name
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Street name"
+                                      ng-model="streetName"></textarea>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Add details -->
+                        <ons-col width="20%">
+                            <p class="form-field-text">
+                                Add no. / name
+                            </p>
+                            <img src="images/plus-icon-blue.png" width="40%" height="auto" onclick="informationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Land access required -->
+                <section class="form-section" ng-show="serviceChangeRequired.yesnooptionid == 1 || serviceChangeRequired.yesnooptionid == 0">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Land Access</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                <span class="information-small-pink">*</span> Land access required?
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="landAccessRequired.yesnooptionid"
+                                    ng-options="landAccessRequiredOption.yesnooptionid as landAccessRequiredOption.yesnooptiondesc for landAccessRequiredOption in YesNoOption"
+                                    ng-change="changedDetailsValue(landAccessRequired.yesnooptionid, 'LandAccessRequired')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+
+
+
+
+
+
+                <!-- ******************** TEST ******************** -->
+                <!--section style="padding: 0 8px 8px">
+                    <ons-button var="saveBtn"
+                                modifier="large"
+                                type="submit"
+                                ng-click="submitDetailsData()">Submit Details Data</ons-button>
+                </section-->
+
+
+
+                <br />
+
+
+
+                <!-- Mandatory questions -->
+                <section class="form-section" ng-show="serviceChangeRequired.yesnooptionid == 1 || serviceChangeRequired.yesnooptionid == 0">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Additional Information</p>
+                        </ons-col>
+                        <ons-col>
+                            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- BT transfer required -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                BT transfer required
+                            </p>
+                            <select ng-model="BTTransferArray.idbttransfer"
+                                    ng-options="btTransferOption.idbttransfer as btTransferOption.bttransferdesc for btTransferOption in BTTransferArray"
+                                    ng-change="changedTasksValue(BTTransferArray.idbttransfer, '1')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Re-plumb pole -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Re-plumb pole
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="replumbPole.yesnooptionid"
+                                    ng-options="replumbPoleOption.yesnooptionid as replumbPoleOption.yesnooptiondesc for replumbPoleOption in YesNoOption"
+                                    ng-change="changedTasksValue(replumbPole.yesnooptionid, '2')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Utilise existing pole left by others -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Utilise existing pole left by others
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="poleLeftByOthers.yesnooptionid"
+                                    ng-options="poleLeftByOthersOption.yesnooptionid as poleLeftByOthersOption.yesnooptiondesc for poleLeftByOthersOption in YesNoOption"
+                                    ng-change="changedTasksValue(poleLeftByOthers.yesnooptionid, '3')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Remove existing pole left by others -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Remove existing pole left by others
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="removePoleLeftByOthers.yesnooptionid"
+                                    ng-options="removePoleLeftByOthersOption.yesnooptionid as removePoleLeftByOthersOption.yesnooptiondesc for removePoleLeftByOthersOption in YesNoOption"
+                                    ng-change="changedTasksValue(removePoleLeftByOthers.yesnooptionid, '4')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Street light transfer -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Street light transfer
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="streetLightTransfer.yesnooptionid"
+                                    ng-options="streetLightTransferOption.yesnooptionid as streetLightTransferOption.yesnooptiondesc for streetLightTransferOption in YesNoOption"
+                                    ng-change="changedTasksValue(streetLightTransfer.yesnooptionid, '5')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- PME -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                PME
+                            </p>
+                            <select ng-model="PMEArray.idpme"
+                                    ng-options="pmeOption.idpme as pmeOption.pmedesc for pmeOption in PMEArray"
+                                    ng-change="changedTasksValue(PMEArray.idpme, '6')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Change stay wire only -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Stay
+                            </p>
+                            <select ng-model="StayWireArray.idstaywire"
+                                    ng-options="stayWireOption.idstaywire as stayWireOption.staywiredesc for stayWireOption in StayWireArray"
+                                    ng-change="changedTasksValue(StayWireArray.idstaywire, '7')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Unbind and re-regulate existing single conductor -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Unbind and re-regulate existing single conductor
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="unbind.yesnooptionid"
+                                    ng-options="unbindOption.yesnooptionid as unbindOption.yesnooptiondesc for unbindOption in YesNoOption"
+                                    ng-change="changedTasksValue(unbind.yesnooptionid, '8')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Additional single conductors on same span -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Additional single conductors on same span
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="singleConductorsSameSpan.yesnooptionid"
+                                    ng-options="singleConductorsSameSpanOption.yesnooptionid as singleConductorsSameSpanOption.yesnooptiondesc for singleConductorsSameSpanOption in YesNoOption"
+                                    ng-change="changedTasksValue(singleConductorsSameSpan.yesnooptionid, '9')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- PC400 renewed -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                PC400 renewed
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="pc400.yesnooptionid"
+                                    ng-options="pc400Option.yesnooptionid as pc400Option.yesnooptiondesc for pc400Option in YesNoOption"
+                                    ng-change="changedTasksValue(pc400.yesnooptionid, '10')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Fit pole extension bracket -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Fit pole extension bracket
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="poleExtensionBracket.yesnooptionid"
+                                    ng-options="poleExtensionBracketOption.yesnooptionid as poleExtensionBracketOption.yesnooptiondesc for poleExtensionBracketOption in YesNoOption"
+                                    ng-change="changedTasksValue(poleExtensionBracket.yesnooptionid, '11')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Transfer and extend existing U/G service -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Transfer and extend existing U/G service
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="ugService.yesnooptionid"
+                                    ng-options="ugServiceOption.yesnooptionid as ugServiceOption.yesnooptiondesc for ugServiceOption in YesNoOption"
+                                    ng-change="changedTasksValue(ugService.yesnooptionid, '12')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- LV straight joint -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                LV straight joint
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="lvStraightJoint.yesnooptionid"
+                                    ng-options="lvStraightJointOption.yesnooptionid as lvStraightJointOption.yesnooptiondesc for lvStraightJointOption in YesNoOption"
+                                    ng-change="changedTasksValue(lvStraightJoint.yesnooptionid, '13')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row ng-show="lvStraightJoint.yesnooptionid == 1">
+                        <!-- LV joint bay in made surface -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                LV joint bay
+                            </p>
+                            <select ng-model="JointBayArray.idjointbay"
+                                    ng-options="jointBayOption.idjointbay as jointBayOption.jointbaydesc for jointBayOption in JointBayArray"
+                                    ng-change="changedTasksValue(JointBayArray.idjointbay, '14')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Make and erect LV pole term -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Make and erect LV pole term
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="lvPoleTerm.yesnooptionid"
+                                    ng-options="lvPoleTermOption.yesnooptionid as lvPoleTermOption.yesnooptiondesc for lvPoleTermOption in YesNoOption"
+                                    ng-change="changedTasksValue(lvPoleTerm.yesnooptionid, '16')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+                    </ons-row>
+
+                    <ons-row ng-show="JointBayArray.idjointbay == 1">
+                        <!-- LV joint bay comment -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                LV joint bay comment
+                            </p>
+                            <div>
+                                <input class="text-input" type="text" placeholder="Comment" required />
+                            </div>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- LV outage -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                LV outage
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="lvOutage.yesnooptionid"
+                                    ng-options="lvOutageOption.yesnooptionid as lvOutageOption.yesnooptiondesc for lvOutageOption in YesNoOption"
+                                    ng-change="changedTasksValue(lvOutage.yesnooptionid, '17')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- HV outage -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                HV outage
+                            </p>
+                            <select id="country" name="duration"
+                                    ng-model="hvOutage.yesnooptionid"
+                                    ng-options="hvOutageOption.yesnooptionid as hvOutageOption.yesnooptiondesc for hvOutageOption in YesNoOption"
+                                    ng-change="changedTasksValue(hvOutage.yesnooptionid, '18')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <!-- Tree cutting -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Tree cutting
+                            </p>
+                            <select ng-model="TreeCuttingArray.idtreecutting"
+                                    ng-options="treeCuttingOption.idtreecutting as treeCuttingOption.treecuttingdesc for treeCuttingOption in TreeCuttingArray"
+                                    ng-change="changedTasksValue(TreeCuttingArray.idtreecutting, '19')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+
+
+
+
+
+
+                <!-- ******************** TEST ******************** -->
+                <!--section style="padding: 0 8px 8px">
+                    <ons-button var="saveBtn"
+                                modifier="large"
+                                type="submit"
+                                ng-click="submitTaskData()">Submit Task Data</ons-button>
+                </section-->
+
+
+
+                <br /><br />
+
+
+                <!-- Land access required -->
+                <!--section class="form-section" ng-show="service_change_option == 'yes'">
+                    <div ng-include="'fragments/patrol-sheet-fragments/land-access-required-fragment.html'"></div>
+                </section>
+
+                <section class="form-section" ng-show="service_change_option == 'no'">
+                    <div ng-include="'fragments/patrol-sheet-fragments/land-access-required-fragment.html'"></div>
+                </section-->
+                <!-- Mandatory questions -->
+                <!--section class="form-section" ng-show="service_change_option == 'no'">
+                    <div ng-include="'fragments/patrol-sheet-fragments/patrol-details-mandatory-questions-fragment.html'"></div>
+                </section>
+
+                <section class="form-section" ng-show="service_change_option == 'yes'">
+                    <div ng-include="'fragments/patrol-sheet-fragments/patrol-details-mandatory-questions-fragment.html'"></div>
+                </section-->
+                <!-- Next button -->
+                <section style="padding: 0 8px 8px" ng-show="serviceChangeRequired.yesnooptionid == 1 || serviceChangeRequired.yesnooptionid == 0">
+                    <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('wira.html', {animation: 'fade'});">Next</ons-button>
+                </section>
+
+                <!--section style="padding: 0 8px 8px" ng-show="service_change_option == 'no'">
+                    <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('wira.html', {animation: 'fade'});">Next</ons-button>
+                </section-->
+
+                <br /><br /><br /><br />
+
+            </form>
+        </ons-scroller>
+
+
+        <!-- Displays delete confirmation modal screen -->
+        <ons-modal var="deleteConfirmationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">CAUTION!</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This form section and all associated information will be <span style="color: #e5514e">DELETED</span>.<br><br>
+                                Are you sure you wish to continue with this operation?
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--one" ng-click="deleteConfirmationModal.hide()">Cancel</button>
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="deleteConfirmationModal.hide()">Delete</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Select from the options below to edit the patrol.</span>.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Coming Soon Modal Information Screen -->
+        <ons-modal var="comingSoonInformationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This feature is currently not available.<br><br>
+                                Please check back later for updates.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>

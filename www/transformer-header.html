@@ -1,0 +1,300 @@
+<div ng-controller="TransformerHeaderController">
+    <ons-page>
+        
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Transformer Header
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+        
+        <!-- Default Background -->
+        <div style="text-align: center">
+            <br><br>
+            <img src="images/patrol-icon-blue.png" width="30%" height="auto" />
+            <h4 style="color: #015190">
+               TRANSFORMER HEADER
+            </h4>
+
+            <!-- Progress indicator -->
+            <div class="progress">
+                <div class="circle done">
+                    <span class="label">1</span>
+                </div>
+
+                <div class="circle done">
+                    <span class="label">2</span>
+                </div>
+
+                <div class="circle active">
+                    <span class="label">3</span>
+                </div>
+
+                <div class="circle">
+                    <span class="label">4</span>
+                </div>
+
+                <div class="circle">
+                    <span class="label">5</span>
+                </div>
+
+                <div class="circle">
+                    <span class="label">6</span>
+                </div>
+            </div>
+            
+            <p class="information-small-grey">
+                Complete transformer header information to view associated defects
+            </p>
+            
+            <!--img src="images/information-icon-pink.png" width="12%" height="auto" onclick="informationModal.show('modal')" /-->
+        </div>
+
+        <!-- Static information -->
+        <form class="login-form" style="text-align: left" name="myForm">
+            <!-- Isolation points -->
+            <section class="static-information-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Grid Square ID: <span class="information-small-pink">GSID-123-987</span>
+                        </p>
+
+                        <p class="information-small-grey">
+                            Transformer ID: <span class="information-small-pink">TID-123-987</span>
+                        </p>
+                    </ons-col>
+                    
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Patroller: <span class="information-small-pink">John Doe</span>
+                        </p>
+
+                        <p class="information-small-grey">
+                            Partol Date: <span class="information-small-pink">12-08-2016</span>
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </section>
+        </form>
+
+        <!-- Form content -->
+        <form class="login-form" style="text-align: left" name="myForm">
+            <!-- Isolation points -->
+            <section class="form-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Isolation points</p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Isolation point
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <select id="country" name="duration">
+                            <option value="usa">Unknown</option>
+                            <option value="usa">Unknown</option>
+                            <option value="usa">Unknown</option>
+                            <option value="usa">Unknown</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Isolation point comments
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <textarea class="textarea" rows="3" placeholder="Comments"></textarea>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Isolation point photo
+                        </p>
+
+                        <button class="upload-photo-button" onclick="comingSoonInformationModal.show('modal')">Upload Photo</button>
+                        <br />
+                        <span class="information-small-grey">0.0Kb</span>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+            </section>
+
+            <br />
+
+            <!-- Normally open points -->
+            <section class="form-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Normally open points</p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Normally open point
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <select id="country" name="duration">
+                            <option value="usa">Yes</option>
+                            <option value="usa">No</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Normally open point checked
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <select id="country" name="duration">
+                            <option value="usa">Yes</option>
+                            <option value="usa">No</option>
+                        </select>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Normally open point comments
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <textarea class="textarea" rows="3" placeholder="Comments"></textarea>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+
+                <ons-row>
+                    <ons-col>
+                        <p class="form-field-text">
+                            Normally open point photo
+                        </p>
+
+                        <button class="upload-photo-button" onclick="comingSoonInformationModal.show('modal')">Upload Photo</button>
+                        <br />
+                        <span class="information-small-grey">0.0Kb</span>
+                    </ons-col>
+                </ons-row>
+
+                <br />
+            </section>
+            
+            <br /><br />
+            
+            <section style="padding: 0 8px 8px">
+                <ons-button var="saveBtn" ng-disabled="myForm.$invalid" modifier="large" ng-click="myNavigator.pushPage('defect-list.html', {animation: 'fade'});">Next</ons-button>
+            </section>
+        </form>
+        
+        <br /><br />
+        
+        
+        
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+        
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+        
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Please complete the relevant <span style="color: #e5514e">transformer header</span> information.<br><br>
+                                All fields marked with a <span style="color: #e5514e">*</span> are required
+                            </small>
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()")>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+        
+        <!-- Displays Coming Soon Modal Information Screen -->
+        <ons-modal var="comingSoonInformationModal">
+            <div class="alert-dialog-mask"></div>
+        
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+        
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This feature is currently not available yet.<br><br>
+                                Please check back later for updates.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()")>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+        
+    </ons-page>
+</div>
+
+
+
+
+

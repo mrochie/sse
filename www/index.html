@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    
+    <!-- Mobile Web App Capable -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <title>SSE</title>
+    
+    <!-- Angular Script -->
+    <!--script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script-->
+    
+    <script src="components/loader.js"></script>
+
+    <!-- IMPORTANT -->
+    <!-- Load the scripts for the seperate view here. Make sure this is below angular call above and below app.js -->
+    <script src="js/app.js"></script>
+    <script src="js/landing-page-controller.js"></script>
+    <script src="js/login-confirmation-page.js"></script>
+    <script src="js/login.js"></script>
+    
+    <script src="js/main-navigation-controller.js"></script>
+    
+    <script src="js/sync-patrol-data.js"></script>
+    <script src="js/sync-patrol-data-submit.js"></script>
+    <script src="js/sync-patrol-defect.js"></script>
+    <script src="js/sync-patrol-data-details.js"></script>
+    
+    <script src="js/grid-square-list.js"></script>
+    <script src="js/transformer-list.js"></script>
+    <script src="js/transformer-header.js"></script>
+
+    <script src="js/wira.js"></script>
+    <script src="js/wira-confirmation.js"></script>
+
+    <script src="js/patrol-details.js"></script>
+
+    <script src="js/add-pole.js"></script>
+
+    <script src="js/defect-list.js"></script>
+    <script src="js/magical-questions.js"></script>
+	<script src="js/defect-details.js"></script>
+
+    <script src="js/land-access-main-navigation.js"></script>
+    <script src="js/land-access-details.js"></script>
+    <script src="js/land-access-confirmation.js"></script>
+	
+	<script src="js/106-defect.js"></script>
+    <script src="js/106-defect-confirmation.js"></script>
+    
+    <script src="js/additional-class-a.js"></script>
+    <script src="js/additional-class-a-confirmation.js"></script>
+
+    <script src="js/sharedProperties.js"></script>
+    <script src="js/network-connection.js"></script>
+    <script src="js/network-connection-check.js"></script>
+    <script src="js/downloadPatrolFormData.js"></script>
+    <script src="js/createLocalStorageTables.js"></script>
+    <script src="js/createFormArrays.js"></script>
+
+
+
+
+    <script src="js/photo-test.js"></script>
+
+    <!-- Graph -->
+    <script src="js/graphs.js"></script>
+
+    <!-- Install Bower Angular Multiple Select -->
+    <script src="/bower_components/angular-multiple-select/build/multiple-select.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery.flot.min.js"></script>
+
+    <script src="js/winstore-jscompat.js"></script>
+
+    <link rel="stylesshet" href="components/monaca-onsenui/js/angular/angular-csp.css">
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Install Bower Angular Multiple Select -->
+    <!-- **************** HAVE TO ADD 'multipleSelect' TO APP.JS TO MAKE THIS WORK **************** -->
+    <link href="/bower_components/angular-multiple-select/build/multiple-select.min.css" rel="stylesheet">
+
+    <!-- Graph -->
+    <link rel="stylesheet" href="css/graphs.css" />
+ 
+</head>
+
+<body>
+    <!--ons-navigator var="myNavigator" page="landing-page.html"></ons-navigator-->
+    <ons-navigator var="myNavigator" page="login.html"></ons-navigator>
+    <!--ons-navigator var="myNavigator" page="main-navigation.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="land-access-details.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="sync-patrol-data.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="sync-patrol-data-submit.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="grid-square-list.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="transformer-list.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="transformer-header.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="graphs.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="106-defect.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="wira.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="land-access-confirmation.html"></ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="photo-test.html"></!--ons-navigator-->
+    <!--ons-navigator var="myNavigator" page="add-pole-confirmation.html"></ons-navigator-->
+</body>
+</html>

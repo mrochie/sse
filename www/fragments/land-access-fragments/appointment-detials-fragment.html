@@ -1,0 +1,168 @@
+﻿<!-- Land Access - Apointment Details -->
+
+<div ng-controller="LandAccessDetailsController">
+    <!-- Land Access - Apointment Details -->
+    <ons-row>
+        <ons-col  width="95%">
+            <p class="form-header">Appointment Details</p>
+        </ons-col>
+        <ons-col>
+            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+        </ons-col>
+    </ons-row>
+
+    <!-- Power cut duration -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Power cut duration
+            </p>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <select id="country" name="duration">
+                <option value="usa">< 2 Hrs</option>
+                <option value="usa">2 - 3 Hrs</option>
+                <option value="usa">4 Hrs</option>
+                <option value="usa">> 4 Hrs</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <!-- Time -->
+    <ons-row>
+        <!-- AM/PM -->
+        <ons-col>
+            <p class="form-field-text">
+                Time
+            </p>
+            
+            <select id="country" name="time">
+                <option value="usa">AM</option>
+                <option value="usa">PM</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Hour -->
+        <ons-col>
+            <p class="form-field-text">
+                Hour
+            </p>
+
+            <select id="country" name="hour">
+                <option value="usa">1:00</option>
+                <option value="usa">2:00</option>
+                <option value="usa">3:00</option>
+                <option value="usa">4:00</option>
+                <option value="usa">5:00</option>
+                <option value="usa">6:30</option>
+                <option value="usa">7:00</option>
+                <option value="usa">8:00</option>
+                <option value="usa">9:00</option>
+                <option value="usa">10:00</option>
+                <option value="usa">11:00</option>
+                <option value="usa">12:00</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Mins -->
+        <ons-col>
+            <p class="form-field-text">
+                Mins
+            </p>
+
+            <select id="country" name="hour">
+                <option value="usa">00:00</option>
+                <option value="usa">00:15</option>
+                <option value="usa">08:30</option>
+                <option value="usa">08:45</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <!-- Date -->
+    <ons-row>
+        <!-- Date -->
+        <ons-col>
+            <p class="form-field-text">
+                Date
+            </p>
+
+            <select id="country" name="hour">
+                <option value="usa">1</option>
+                <option value="usa">2</option>
+                <option value="usa">3</option>
+                <option value="usa">4</option>
+                <option value="usa">5</option>
+                <option value="usa">6</option>
+                <option value="usa">7</option>
+                <option value="usa">8</option>
+                <option value="usa">9</option>
+                <option value="usa">10</option>
+                <option value="usa">11</option>
+                <option value="usa">12</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Month -->
+        <ons-col>
+            <p class="form-field-text">
+                Month
+            </p>
+
+            <select id="country" name="month">
+                <option value="usa">Jan</option>
+                <option value="usa">Feb</option>
+                <option value="usa">March</option>
+                <option value="usa">April</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Year -->
+        <ons-col>
+            <p class="form-field-text">
+                Year
+            </p>
+
+            <select id="country" name="year">
+                <option value="usa">2016</option>
+                <option value="usa">2017</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <!-- Prefered day -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Prefered day
+            </p>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <select id="country" name="day">
+                <option value="usa">Monday</option>
+                <option value="usa">Tuesday</option>
+                <option value="usa">Wednesday</option>
+                <option value="usa">Thursday</option>
+                <option value="usa">Friday</option>
+                <option value="usa">Saturday</option>
+                <option value="usa">Sunday</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <br />
+</div>

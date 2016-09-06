@@ -1,0 +1,91 @@
+﻿<div ng-controller="TransformerHeaderController" ng-init="init()">
+    <!-- Normally open points -->
+    <ons-row>
+        <ons-col width="95%">
+            <p class="form-header">Normally Open Point</p>
+        </ons-col>
+        <ons-col>
+            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Normally open point
+            </p>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <select id="country" name="duration">
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <br />
+
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Normally open point checked
+            </p>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <select id="country" name="duration">
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Normally open point comments
+            </p>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <textarea class="textarea" rows="3" placeholder="Comments"></textarea>
+        </ons-col>
+    </ons-row>
+
+    <br />
+
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Normally open point photo
+            </p>
+
+            <!--button class="upload-photo-button" onclick="capturePhoto()">Upload Photo</button-->
+            <button class="upload-photo-button" id="img-clck">Upload Photo</button>
+            
+            <br />
+
+            <!-- Display the captured image -->
+            <ons-row>
+                <ons-col>
+                    <img style="display: none; width: 20%; height: auto" id="smallImage" src="" />
+                    <img style="display: none;" id="largeImage" src="" />
+                </ons-col>
+            </ons-row>
+
+            <span class="information-small-grey">0.0Kb</span>
+        </ons-col>
+    </ons-row>
+</div>
+
+
+
+
+

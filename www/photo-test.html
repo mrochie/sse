@@ -1,0 +1,101 @@
+﻿<div ng-controller="PhotoTestController" data-ng-init="init()">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Photo
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/106-defect-icon-white-new.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            Photo
+                        </h4>
+                        <p class="page-header-right description">
+                            Select from the options below to complete the 106 Defect.
+                        </p>
+                        <p class="page-header-right description">
+                            BETA v1.0
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            <br /><br />
+
+            <!-- Deafult Info -->
+            <!-- Details -->
+            <section class="default-info-section">
+
+
+
+
+
+                <ons-button type="submit"
+                            class="login-form-submit-decline"
+                            ng-click="capturePhoto()">
+                    <i class="fa fa-times">capturePhoto</i>
+                </ons-button>
+
+                <ons-button type="submit"
+                            class="login-form-submit-decline"
+                            ng-click="capturePhotoEdit()">
+                    <i class="fa fa-times">capturePhotoEdit</i>
+                </ons-button>
+
+                <ons-button type="submit"
+                            class="login-form-submit-decline"
+                            ng-click="getPhoto(pictureSource.PHOTOLIBRARY)">
+                    <i class="fa fa-times">PHOTOLIBRARY</i>
+                </ons-button>
+
+                <ons-button type="submit"
+                            class="login-form-submit-decline"
+                            ng-click="getPhoto(pictureSource.SAVEDPHOTOALBUM)">
+                    <i class="fa fa-times">SAVEDPHOTOALBUM</i>
+                </ons-button>
+
+
+
+
+
+
+
+                
+                <br /><br />
+                <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+                <br /><br />
+                <img style="display:none;" id="largeImage" src="" />
+
+            </section>
+        </ons-scroller>
+
+                
+                
+               
+
+    </ons-page>
+</div>

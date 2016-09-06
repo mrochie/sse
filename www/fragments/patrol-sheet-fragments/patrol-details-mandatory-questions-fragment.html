@@ -1,0 +1,280 @@
+﻿<div ng-controller="TransformerHeaderController">
+    <!-- Patrol details mandatory questions -->
+    <ons-row>
+        <ons-col width="95%">
+            <p class="form-header">Additional Information</p>
+        </ons-col>
+        <ons-col>
+            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- BT transfer required -->
+        <ons-col>
+            <p class="form-field-text">
+                BT transfer required
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">BT</option>
+                <option value="usa">Reclip</option>
+                <option value="usa">BT on shutdown</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Re-plumb pole -->
+        <ons-col>
+            <p class="form-field-text">
+                Re-plumb pole
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- Utilise existing pole left by others -->
+        <ons-col>
+            <p class="form-field-text">
+                Utilise existing pole left by others
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Remove existing pole left by others -->
+        <ons-col>
+            <p class="form-field-text">
+                Remove existing pole left by others
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- Street light transfer -->
+        <ons-col>
+            <p class="form-field-text">
+                Street light transfer
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- PME -->
+        <ons-col>
+            <p class="form-field-text">
+                PME
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+                <option value="usa">Instal new PME</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- Change stay wire only -->
+        <ons-col>
+            <p class="form-field-text">
+                Stay
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Stay complete</option>
+                <option value="usa">Stay wire only</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Unbind and re-regulate existing single conductor -->
+        <ons-col>
+            <p class="form-field-text">
+                Unbind and re-regulate existing single conductor
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- Additional single conductors on same span -->
+        <ons-col>
+            <p class="form-field-text">
+                Additional single conductors on same span
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- PC400 renewed -->
+        <ons-col>
+            <p class="form-field-text">
+                PC400 renewed
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- Fit pole extension bracket -->
+        <ons-col>
+            <p class="form-field-text">
+                Fit pole extension bracket
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Transfer and extend existing U/G service -->
+        <ons-col>
+            <p class="form-field-text">
+                Transfer and extend existing U/G service
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- LV straight joint -->
+        <ons-col>
+            <p class="form-field-text">
+                LV straight joint
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- LV joint bay in made surface -->
+        <ons-col>
+            <p class="form-field-text">
+                LV joint bay
+            </p>
+            <select id="country" name="duration" ng-model="lv_joint_bay_option">
+                <option value="n/a">-- Please Select --</option>
+                <option value="made">Made</option>
+                <option value="unmade">Unmade</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row ng-show="lv_joint_bay_option == 'made'">
+        <!-- LV joint bay comment -->
+        <ons-col>
+            <p class="form-field-text">
+                LV joint bay comment
+            </p>
+            <div>
+                <textarea class="textarea" rows="3" placeholder="Comments"></textarea>
+            </div>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- Make and erect LV pole term -->
+        <ons-col>
+            <p class="form-field-text">
+                Make and erect LV pole term
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- LV outage -->
+        <ons-col>
+            <p class="form-field-text">
+                LV outage
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <!-- HV outage -->
+        <ons-col>
+            <p class="form-field-text">
+                HV outage
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+
+        <!-- Tree cutting -->
+        <ons-col>
+            <p class="form-field-text">
+                Tree cutting
+            </p>
+            <select id="country" name="duration">
+                <option value="n/a">-- Please Select --</option>
+                <option value="usa">L</option>
+                <option value="usa">M</option>
+                <option value="usa">H</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <br />
+</div>

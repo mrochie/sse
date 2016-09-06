@@ -1,0 +1,311 @@
+﻿<div ng-controller="GraphsController">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Patrol
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+
+
+        
+
+       
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+            <!-- Scroller -->
+            <ons-scroller style="height: 100%; width: 100%">
+
+                <!-- Default Background -->
+                <div class="page-header">
+                    <ons-row class="page-header">
+                        <ons-col class="page-header-left" width="30%">
+                            <img src="images/patrol-icon.png" width="45%">
+                        </ons-col>
+
+                        <ons-col .page-header-right>
+                            <h4 class="page-header-right header">
+                                Patrol
+                            </h4>
+                            <p class="page-header-right description">
+                                Select from the options below to complete the patrol. The form generates content dynamically based on input.
+                            </p>
+                            <p class="page-header-right description">
+                                BETA v1.0
+                            </p>
+                        </ons-col>
+                    </ons-row>
+                </div>
+
+
+
+                <!-- Graph HTML -->
+                <!--div id="graph-wrapper">
+                    <div class="graph-info">
+                        <a href="javascript:void(0)" class="visitors">Visitors</a>
+                        <a href="javascript:void(0)" class="returning">Returning Visitors</a>
+                        <a href="#" id="bars"><span></span></a>
+                        <a href="#" id="lines" class="active"><span></span></a>
+                    </div>
+                    <div class="graph-container">
+                        <div id="graph-lines"></div>
+                        <div id="graph-bars"></div>
+                    </div>
+                </div-->
+                <!-- end Graph HTML -->
+
+
+
+
+
+                <!-- Form Start -->
+                <form class="login-form" style="text-align: left" name="myForm" novalidate>
+                    
+                    
+
+
+                    <!-- Normally open point -->
+                    <section class="form-section">
+                        <ons-row>
+                            <ons-col width="95%">
+                                <p class="form-header">Normally Open Point</p>
+                            </ons-col>
+                            <ons-col>
+                                <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col>
+                                <p class="form-field-text">
+                                    Normally open point
+                                </p>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col>
+
+                                <select id="country" name="duration"
+                                        ng-model="yes"
+                                        ng-options="yesOption.yesnooptionid as yesOption.yesnooptiondesc for yesOption in YesNo"
+                                        ng-change="changedValue(yes.yesnooptionid, 'NormallyOpenPoint')">
+                                    <option value="" label="-- Please Select --"></option>
+                                </select>
+                            </ons-col>
+                        </ons-row>
+
+                        <br />
+
+                        <ons-row>
+                            <ons-col>
+                                <p class="form-field-text">
+                                    Normally open point checked
+                                </p>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col>
+                                <select id="country" name="duration"
+                                        ng-model="no"
+                                        ng-options="noOption.yesnooptionid as noOption.yesnooptiondesc for noOption in YesNo"
+                                        ng-change="changedValue(noOption.yesnooptionid, 'NormallyOpenPointChecked')">
+                                    <option value="" label="-- Please Select --"></option>
+                                </select>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col>
+                                <p class="form-field-text">
+                                    Normally open point comments
+                                </p>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row>
+                            <ons-col>
+                                <textarea class="textarea"
+                                          rows="3"
+                                          placeholder="Comments"
+                                          ng-model="normallyOpenPointComments"
+                                          ng-change="saveIsolationPointComments(normallyOpenPointComments)"></textarea>
+                            </ons-col>
+                        </ons-row>
+
+                        <br />
+
+                        <ons-row>
+                            <ons-col>
+                                <p class="form-field-text">
+                                    Normally open point photo
+                                </p>
+
+                                <!--button class="upload-photo-button" onclick="capturePhoto()">Upload Photo</button-->
+                                <button class="upload-photo-button" id="img-clck">Upload Photo</button>
+
+                                <br />
+
+                                <!-- Display the captured image -->
+                                <ons-row>
+                                    <ons-col>
+                                        <img style="display: none; width: 20%; height: auto" id="smallImage" src="" />
+                                        <img style="display: none;" id="largeImage" src="" />
+                                    </ons-col>
+                                </ons-row>
+
+                                <span class="information-small-grey">0.0Kb</span>
+                            </ons-col>
+                        </ons-row>
+                    </section>
+
+
+
+                    <!-- Land access required -->
+                    <section class="form-section" ng-show="service_change_option == 'yes'">
+                        <div ng-include="'fragments/patrol-sheet-fragments/land-access-required-fragment.html'"></div>
+                    </section>
+
+                    <section class="form-section" ng-show="service_change_option == 'no'">
+                        <div ng-include="'fragments/patrol-sheet-fragments/land-access-required-fragment.html'"></div>
+                    </section>
+
+                    <br />
+
+                    <!-- Mandatory questions -->
+                    <section class="form-section" ng-show="service_change_option == 'no'">
+                        <div ng-include="'fragments/patrol-sheet-fragments/patrol-details-mandatory-questions-fragment.html'"></div>
+                    </section>
+
+                    <section class="form-section" ng-show="service_change_option == 'yes'">
+                        <div ng-include="'fragments/patrol-sheet-fragments/patrol-details-mandatory-questions-fragment.html'"></div>
+                    </section>
+
+                    <br /><br />
+
+                    <!-- Next button -->
+                    <section style="padding: 0 8px 8px" ng-show="service_change_option == 'yes'">
+                        <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('wira.html', {animation: 'fade'});">Next</ons-button>
+                    </section>
+
+                    <section style="padding: 0 8px 8px" ng-show="service_change_option == 'no'">
+                        <ons-button var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('wira.html', {animation: 'fade'});">Next</ons-button>
+                    </section>
+
+                    <br /><br /><br /><br />
+
+                </form>
+            </ons-scroller>
+
+
+            <!-- Displays delete confirmation modal screen -->
+            <ons-modal var="deleteConfirmationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">CAUTION!</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    This form section and all associated information will be <span style="color: #e5514e">DELETED</span>.<br><br>
+                                    Are you sure you wish to continue with this operation?
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--one" ng-click="deleteConfirmationModal.hide()">Cancel</button>
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="deleteConfirmationModal.hide()">Delete</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+            <!-- Displays Modal Information Screen -->
+            <ons-modal var="informationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    Select the <span style="color: #e5514e">grid square ID</span> to be patrolled.<br><br>
+                                    Completed grid squares are marked as <span style="color: #7cc343">green</span>.<br><br>
+                                    Only grid squares with completed <span style="color: #e5514e">transformers</span> can be synched back to the TLI Management System.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+            <!-- Displays Coming Soon Modal Information Screen -->
+            <ons-modal var="comingSoonInformationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    This feature is currently not available yet.<br><br>
+                                    Please check back later for updates.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+        </ons-page>
+</div>

@@ -1,0 +1,111 @@
+﻿<div ng-controller="LoginConfirmationController" data-ng-init="init()">
+    <ons-page>
+
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">Back</span>
+            </div>
+            
+            <div class="navigation-bar__center">
+                Login Status
+            </div>
+        </div>
+
+        <!-- Default Background -->
+        <div style="text-align: center">
+            <br><br>
+            <img src="images/sse-logo-flat.png" width="50%" height="auto" alt="TLI Logo" />
+            <br><br>
+            <h4 style="color: #015190">
+                LOGIN STATUS
+            </h4>
+
+            <img src="images/information-icon-orange.png" width="12%" height="auto" onclick="informationModal.show('modal')" />
+        </div>
+
+        <!-- Show Network status -->
+        <div style="text-align: center" ng-if="online">
+            <p class="information-small-grey">Network status: <span class="information-small-pink">ONLINE</span></p>
+        </div>
+
+        <div style="text-align: center" ng-if="!online">
+            <p class="information-small-grey">Network status: <span class="information-small-pink">OFFLINE</span></p>
+        </div>
+
+        <br />
+
+        <!-- Show UI based on User details status -->
+        <div style="text-align:center" ng-if="showLoginScreenUI">
+            <p class="information-small-grey">
+                There are no saved details matching User ID <span class="information-small-pink"><strong>{{userEnteredUserID}}</strong></span> stored on this device.
+                <br /><br /><br />
+                Please go BACK and try again or LOGIN below.
+            </p>
+
+            <section style="padding: 0 8px 8px">
+                <ons-button var="loginBtn"
+                            modifier="large"
+                            ng-click="myNavigator.pushPage('login.html', {animation: 'slide'});">Login</ons-button>
+            </section>
+        </div>
+
+        <div style="text-align:center" ng-if="showNoNetworkAndNoDatabaseValuesErrorMessage">
+            <p class="information-small-grey">
+                There are no saved details matching User ID <span class="information-small-pink">{{userEnteredUserID}}</span> stored on this device.
+                Ther is current <span class="information-small-pink">NO</span> active Network connection. 
+                <br /><br />
+                Please try again later.
+            </p>
+        </div>
+
+        <div style="text-align:center" ng-if="showMainNavigationScreenSegueButton">
+            <p class="information-small-grey">
+                Please confirm your name
+            </p>
+            <p style="color: #E5514E">{{databaseUserName}}</p>
+
+            <section style="padding: 0 8px 8px">
+                <ons-button var="loginBtn"
+                            modifier="large"
+                            ng-click="myNavigator.pushPage('main-navigation.html', {animation: 'slide'});">Confirm</ons-button>
+            </section>
+
+            <p class="information-small-grey">
+                Not you?
+                <br />
+                <button class="button--quiet"
+                        var="loginButton"
+                        modifier="large"
+                        ng-click="myNavigator.pushPage('login.html', {animation: 'slide'});">Login with new TLI Employee ID</button>
+            </p>
+        </div>
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                If this is your first time using the app on this device, you will require an <span style="color: #E5514E">active Network connection</span> to login to the TLI Management System <br /><br />
+                                Depending on your current Netword status and saved User details on the device, you may be asked to Confirm you TLI Employee ID or to Login.<br /><br />
+                                If you require any further assistance, please contact your Supervisor.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>

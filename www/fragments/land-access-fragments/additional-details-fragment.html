@@ -1,0 +1,45 @@
+﻿<!-- Land Access - Additional Details -->
+
+<div ng-controller="LandAccessDetailsController">
+    <!-- Land Access - Additional Details -->
+    <ons-row>
+        <ons-col width="95%">
+            <p class="form-header">Additional Details</p>
+        </ons-col>
+        <ons-col>
+            <img class="patrol-details-delete-icon" src="images/delete-icon-grey.png" width="60%" height="auto" onclick="deleteConfirmationModal.show('modal')" />
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <!-- Surveyor name -->
+            <p class="form-field-text">
+                Surveyor name
+            </p>
+            <input type="text" class="text-input" placeholder="Surveyor" value="">
+        </ons-col>
+
+        <p></p>
+
+        <ons-col>
+            <!-- Access officer -->
+            <p class="form-field-text">
+                Access officer
+            </p>
+            <input type="text" class="text-input" placeholder="Access officer" value="">
+        </ons-col>
+    </ons-row>
+
+    <!-- Signature -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Customer consent (please sign)
+            </p>
+            <textarea class="textarea" rows="6" placeholder="Please sign"></textarea>
+        </ons-col>
+    </ons-row>
+
+    <br />
+</div>

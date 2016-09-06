@@ -1,0 +1,93 @@
+﻿<!-- Land Access - Type of Access -->
+
+<div ng-controller="LandAccessDetailsController" ng-init="init()">
+    <!-- Land Access - Type of Access -->
+    <ons-row>
+        <ons-col>
+            <p class="form-header">Type of Access</p>
+        </ons-col>
+    </ons-row>
+
+    <!-- Type of access -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Type of access
+            </p>
+
+            <select id="country" name="country">
+                <option value="usa">Mini digger</option>
+                <option value="usa">Auger</option>
+                <option value="usa">MEWP</option>
+                <option value="usa">Foot only</option>
+                <option value="usa">Other</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+    <!-- Access allowed pre-shutdown -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Access allowed pre-shutdown
+            </p>
+
+            <select id="country" name="country">
+                <option value="usa"></option>
+                <option value="usa">Yes</option>
+                <option value="usa">No</option>
+            </select>
+        </ons-col>
+
+        <p></p>
+        <!-- Additional Comments -->
+        <ons-col>
+            <p class="form-field-text">
+                Comments
+            </p>
+            <textarea class="textarea" rows="2" placeholder="Comments"></textarea>
+        </ons-col>
+    </ons-row>
+
+    <!-- Access / egress details -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Access / egress details
+            </p>
+
+            <button class="upload-photo-button" id="img-clck">Upload Photo</button>
+        </ons-col>
+
+        <p></p>
+        <!-- Additional Comments -->
+        <ons-col>
+            <p class="form-field-text">
+                Comments
+            </p>
+            <textarea class="textarea" rows="2" placeholder="Comments"></textarea>
+        </ons-col>
+    </ons-row>
+
+    <!-- Display the captured image -->
+    <ons-row>
+        <ons-col>
+            <img style="display: none; width: 20%; height: auto" id="smallImage" src="" />
+            <img style="display: none;" id="largeImage" src="" />
+            <br />
+            <span class="information-small-grey">0.0Kb</span>
+        </ons-col>
+    </ons-row>
+
+    <!-- Additional Comments -->
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Additional comments
+            </p>
+            <textarea class="textarea" rows="6" placeholder="Comments"></textarea>
+        </ons-col>
+    </ons-row>
+
+    <br />
+</div>

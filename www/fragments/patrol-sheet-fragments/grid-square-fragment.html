@@ -1,0 +1,51 @@
+﻿<div ng-controller="TransformerHeaderController">
+    <!-- Select grid square -->
+    <ons-row>
+        <ons-col>
+            <p class="form-header">Grid Square</p>
+        </ons-col>
+    </ons-row>
+
+    <ons-row>
+        <ons-col>
+            <p class="form-field-text">
+                Select grid square
+            </p>
+            <select id="country" name="duration">
+                <option value="usa">Grid Square 1</option>
+                <option value="usa">Grid Square 2</option>
+                <option value="usa">Grid Square 3</option>
+                <option value="usa">Grid Square 4</option>
+            </select>
+        </ons-col>
+    </ons-row>
+
+
+
+
+    <!--ons-row>
+        <ons-col>
+            <select ng-model="filter.stateID"
+                    ng-options="item.stateID as item.state for item in st_option">
+            </select>
+
+            <select ng-show="::filter.stateID"
+                    ng-model="filter.countyID"
+                    ng-options="item.countyID as item.county for item in co_option | filter:{ co_state_id : filter.stateID }">
+            </select>
+
+            <div ng-repeat="project in projects | filter:filter">
+                <div>
+                    <br>Name: {{ project.name }}
+                    <br>State: {{project.state}}
+                    <br>County: {{project.county}}
+                    <br>
+                    <span ng-hide="{{project.stateID}} "></span>
+                    <span ng-hide="{{project.countyID}} "></span>
+                </div>
+            </div>
+        </ons-col>
+    </ons-row-->
+
+    <br />
+</div>

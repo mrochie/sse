@@ -1,0 +1,539 @@
+﻿<div ng-controller="WiraFormController" data-ng-init="init()">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                WIRA
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/patrol-icon.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            Workplace Initial Risk Assessment
+                        </h4>
+                        <p class="page-header-right description">
+                            Workplae Initial Risk Assessment
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            <br /><br />
+
+            <!-- Deafult Info -->
+            <!-- Details -->
+            <section class="default-info-section">
+                <ons-row>
+                    <ons-col>
+                        <p class="form-header">Details</p>
+                    </ons-col>
+                </ons-row>
+
+                <!-- Grid Square -->
+                <ons-row>
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Grid Square: <span class="information-small-pink">{{gridSquareID}}</span>
+                        </p>
+                    </ons-col>
+
+                    <!-- Transformer -->
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Transformer: <span class="information-small-pink">{{transformerID}}</span>
+                        </p>
+                    </ons-col>
+                </ons-row>
+
+                <!-- Pole -->
+                <ons-row>
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Pole: <span class="information-small-pink">{{poleID}}</span>
+                        </p>
+                    </ons-col>
+
+                    <!-- Patroller -->
+                    <ons-col>
+                        <p class="information-small-grey">
+                            Patroller: <span class="information-small-pink">{{userName}}</span>
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </section>
+
+
+            <!-- Form Start -->
+            <form class="login-form" style="text-align: left" name="myForm">
+
+                <!-- Details -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Details</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Location and activity -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Location and activity
+                            </p>
+                            <textarea class="textarea"
+                                      rows="3"
+                                      placeholder="Comments"
+                                      ng-model="locationAndActivityComments"></textarea>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- ESQCR issues -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                ESQCR issues
+                            </p>
+                            <select id="" name=""
+                                    ng-model="esqcrIssues.esqcrIssuesID"
+                                    ng-options="esqcrIssuesOption.esqcrIssuesID as esqcrIssuesOption.esqcrIssuesDesc for esqcrIssuesOption in ESQCRIssues"
+                                    ng-change="changedWIRAValue(esqcrIssues.esqcrIssuesID, 'ESQCRIssue')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Date -->
+                    <ons-row>
+                        <!-- Date -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Date
+                            </p>
+                            <select id="" name=""
+                                    ng-model="date.dayID"
+                                    ng-options="dateOption.dayID as dateOption.dayDesc for dateOption in Day"
+                                    ng-change="changedWIRAValue(date.dayID, 'Day')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Month -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Month
+                            </p>
+                            <select id="" name=""
+                                    ng-model="month.monthID"
+                                    ng-options="monthOption.monthID as monthOption.monthDesc for monthOption in Month"
+                                    ng-change="changedWIRAValue(month.monthID, 'Month')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <!-- Year -->
+                        <ons-col>
+                            <p class="form-field-text">
+                                Year
+                            </p>
+                            <select id="" name=""
+                                    ng-model="year.yearID"
+                                    ng-options="yearOption.yearID as yearOption.yearDesc for yearOption in Year"
+                                    ng-change="changedWIRAValue(year.yearID, 'Year')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Conducted by -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Conducted by
+                            </p>
+                            <div>
+                                <input class="text-input" type="text" placeholder="{{userName}}" required />
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Traffic management information -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col width="95%">
+                            <p class="form-header">Traffic Management Information</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Road Schematic -->
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Road Schematic
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <!-- Images -->
+                    <ons-row>
+                        <ons-col>
+                            <img class="wira-form-icon" src="images/strigt-line.png" width="60%" height="auto" onclick="trafficManagementInformationModal.show('modal')" />
+                            <p class="wira-form-images-description">
+                                Straight line
+                            </p>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <img class="wira-form-icon" src="images/corner.png" width="60%" height="auto" onclick="trafficManagementInformationModal.show('modal')" />
+                            <p class="wira-form-images-description">
+                                Corner
+                            </p>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <img class="wira-form-icon" src="images/curved.png" width="60%" height="auto" onclick="trafficManagementInformationModal.show('modal')" />
+                            <p class="wira-form-images-description">
+                                Curved
+                            </p>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <img class="wira-form-icon" src="images/t-junction.png" width="60%" height="auto" onclick="trafficManagementInformationModal.show('modal')" />
+                            <p class="wira-form-images-description">
+                                T-junction
+                            </p>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <img class="wira-form-icon" src="images/cross-roads.png" width="60%" height="auto" onclick="trafficManagementInformationModal.show('modal')" />
+                            <p class="wira-form-images-description">
+                                Cross roads
+                            </p>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <select id="" name=""
+                                    ng-model="roadSchematic.roadSchematicID"
+                                    ng-options="roadSchematicOption.roadSchematicID as roadSchematicOption.roadSchematicDesc for roadSchematicOption in RoadSchematic"
+                                    ng-change="changedWIRAValue(roadSchematic.roadSchematicID, 'RoadSchematic')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+                </section>
+
+                <br />
+
+                <!-- Traffic management clasification -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Traffic Management Clasification</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Road type
+                            </p>
+                            <select id="" name=""
+                                    ng-model="roadType.roadTypeID"
+                                    ng-options="roadTypeOption.roadTypeID as roadTypeOption.roadTypeDesc for roadTypeOption in RoadType"
+                                    ng-change="changedWIRAValue(roadType.roadTypeID, 'RoadType')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Road width
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Road width"
+                                      ng-model="roadWidth"></textarea>
+
+                            <!--input class="text-input"
+                                   type="number"
+                                   placeholder="Road width"
+                                   value=""
+                                   ng-model="roadWidth"-->
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Speed limit
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Speed limit"
+                                      ng-model="speedLimit"></textarea>
+
+                            <!--input class="text-input"
+                                   type="number"
+                                   placeholder="Speed limit"
+                                   value=""
+                                   ng-model="speedLimit"-->
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Environment
+                            </p>
+                            <select id="" name=""
+                                    ng-model="environment.environmentID"
+                                    ng-options="environmentOption.environmentID as environmentOption.environmentDesc for environmentOption in Environment"
+                                    ng-change="changedWIRAValue(environment.environmentID, 'Environment')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Traffic voulume
+                            </p>
+                            <select id="" name=""
+                                    ng-model="trafficVolume.trafficVolumeID"
+                                    ng-options="trafficVolumeOption.trafficVolumeID as trafficVolumeOption.trafficVolumeDesc for trafficVolumeOption in TrafficVolume"
+                                    ng-change="changedWIRAValue(trafficVolume.trafficVolumeID, 'TrafficVolume')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Footpath diversion
+                            </p>
+                            <select id="" name=""
+                                    ng-model="footpathDiversion.footpathDiversionID"
+                                    ng-options="footpathDiversionOption.footpathDiversionID as footpathDiversionOption.footpathDiversionDesc for footpathDiversionOption in FootpathDiversion"
+                                    ng-change="changedWIRAValue(footpathDiversion.footpathDiversionID, 'FootpathDiversion')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Traffic management selection -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Traffic Management Selection</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Traffic management selection
+                            </p>
+                            <select id="" name=""
+                                    ng-model="trafficManagementSelection.trafficManagementSelectionID"
+                                    ng-options="trafficManagementSelectionOption.trafficManagementSelectionID as trafficManagementSelectionOption.trafficManagementSelectionDesc for trafficManagementSelectionOption in TrafficManagementSelection"
+                                    ng-change="changedWIRAValue(trafficManagementSelection.trafficManagementSelectionID, 'TrafficManagementSelection')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br />
+
+                <!-- Additional comments -->
+                <section class="form-section">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Comments</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Additional comments
+                            </p>
+                            </p>
+                            <textarea class="textarea"
+                                      rows="3"
+                                      placeholder="Comments"
+                                      ng-model="additionalComments"></textarea>
+                        </ons-col>
+                    </ons-row>
+                </section>
+
+                <br /><br />
+
+                <!-- Save button -->
+                <section style="padding: 0 8px 8px">
+                    <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('wira-confirmation.html', {animation: 'fade'});">Save</ons-button>
+                </section>
+
+                <br /><br />
+
+            </form>
+        </ons-scroller>
+
+
+        <!-- Displays delete confirmation modal screen -->
+        <ons-modal var="deleteConfirmationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">CAUTION!</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This form section and all associated information will be <span style="color: #e5514e">DELETED</span>.<br><br>
+                                Are you sure you wish to continue with this operation?
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--one" ng-click="deleteConfirmationModal.hide()">Cancel</button>
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="deleteConfirmationModal.hide()">Delete</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Select the <span style="color: #e5514e">grid square ID</span> to be patrolled.<br><br>
+                                Completed grid squares are marked as <span style="color: #7cc343">green</span>.<br><br>
+                                Only grid squares with completed <span style="color: #e5514e">transformers</span> can be synched back to the TLI Management System.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Coming Soon Modal Information Screen -->
+        <ons-modal var="comingSoonInformationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This feature is currently not available yet.<br><br>
+                                Please check back later for updates.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Display the traffic management information modal -->
+        <ons-modal var="trafficManagementInformationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Please select one of the options from the drop-down list below that matches the image.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="trafficManagementInformationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>

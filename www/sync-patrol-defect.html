@@ -1,0 +1,508 @@
+﻿<div ng-controller="SyncPatrolDefectController">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Sync Patrol Defect
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Default background -->
+        <div style="text-align: center">
+            <br><br>
+            <img src="images/sync-icon-blue.png" width="30%" height="auto" alt="TLI Logo" />
+            <h4 style="color: #015190">
+                SYNC PATROL Defect
+            </h4>
+
+            <!--img src="images/information-icon-pink.png" width="12%" height="auto" onclick="informationModal.show('modal')" /-->
+        </div>
+
+        <!-- If the User has Internet connection -->
+        <!--div style="text-align: center" ng-if="online"-->
+        <div style="text-align: center">
+            <!-- Show progress indicator -->
+            <div class="progress">
+                <div class="circle active">
+                    <span class="label">1</span>
+                </div>
+
+                <div class="circle">
+                    <span class="label">2</span>
+                </div>
+
+                <div class="circle">
+                    <span class="label">3</span>
+                </div>
+            </div>
+
+            <p class="information-small-grey">
+                Select a transformer to sync data
+            </p>
+
+            <p class="information-small-grey">
+                Online status: <span class="information-small-pink">ONLINE</span>
+            </p>
+        </div>
+
+        <br /><br />
+
+        <!-- Vehicle check list. All values set to FALSE by default to force User to confirm checks -->
+        <ul class="list">
+            <li class="list__item">
+                <ons-row>
+                    <ons-col width="80px" class="plan-left">
+                        <div class="plan-date">Patrolled</div>
+                        <div class="plan-duration">06.06.2016</div>
+                    </ons-col>
+
+                    <ons-col width="5px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#7cc343' : '#e5514e'}"></ons-col>
+
+                    <!--ons-col class="plan-right" ng-click="myNavigator.pushPage('sync-patrol-data-submit.html', {animation: 'slide'});" )-->
+                    <ons-col class="plan-right">
+                        <!-- Top row -->
+                        <ons-row class="plan-top-row">
+                            <ons-col width="25%">
+                                <div class="plan-icon">
+                                    <img src="images/graph.png" width="50%" height="auto" onclick="informationModal.show('modal')" />
+                                </div>
+                            </ons-col>
+
+                            <ons-col>
+                                <div class="plan-name">Defect #</div>
+                                <div class="plan-info">
+                                    <div>
+                                        <ons-icon icon="ion-person"></ons-icon>Hans Moolman
+                                    </div>
+                                </div>
+                            </ons-col>
+
+                            <ons-col width="25%">
+                                <div class="plan-name">Sync defect</div>
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch__input">
+                                        <div class="switch__toggle"></div>
+                                    </label>
+                                </div>
+                            </ons-col>
+                        </ons-row>
+                    </ons-col>
+                </ons-row>
+            </li>
+
+            <li class="list__item">
+                <ons-row>
+                    <ons-col width="80px" class="plan-left">
+                        <div class="plan-date">Patrolled</div>
+                        <div class="plan-duration">06.06.2016</div>
+                    </ons-col>
+
+                    <ons-col width="5px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#7cc343' : '#e5514e'}"></ons-col>
+
+                    <!--ons-col class="plan-right" ng-click="myNavigator.pushPage('sync-patrol-data-submit.html', {animation: 'slide'});" )-->
+                    <ons-col class="plan-right">
+                        <!-- Top row -->
+                        <ons-row class="plan-top-row">
+                            <ons-col width="25%">
+                                <div class="plan-icon">
+                                    <img src="images/graph.png" width="50%" height="auto" onclick="informationModal.show('modal')" />
+                                </div>
+                            </ons-col>
+
+                            <ons-col>
+                                <div class="plan-name">Defect #</div>
+                                <div class="plan-info">
+                                    <div>
+                                        <ons-icon icon="ion-person"></ons-icon>Hans Moolman
+                                    </div>
+                                </div>
+                            </ons-col>
+
+                            <ons-col width="25%">
+                                <div class="plan-name">Sync defect</div>
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch__input">
+                                        <div class="switch__toggle"></div>
+                                    </label>
+                                </div>
+                            </ons-col>
+                        </ons-row>
+                    </ons-col>
+                </ons-row>
+            </li>
+
+            <li class="list__item">
+                <ons-row>
+                    <ons-col width="80px" class="plan-left">
+                        <div class="plan-date">Patrolled</div>
+                        <div class="plan-duration">06.06.2016</div>
+                    </ons-col>
+
+                    <ons-col width="5px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#7cc343' : '#e5514e'}"></ons-col>
+
+                    <!--ons-col class="plan-right" ng-click="myNavigator.pushPage('sync-patrol-data-submit.html', {animation: 'slide'});" )-->
+                    <ons-col class="plan-right">
+                        <!-- Top row -->
+                        <ons-row class="plan-top-row">
+                            <ons-col width="25%">
+                                <div class="plan-icon">
+                                    <img src="images/graph.png" width="50%" height="auto" onclick="informationModal.show('modal')" />
+                                </div>
+                            </ons-col>
+
+                            <ons-col>
+                                <div class="plan-name">Defect #</div>
+                                <div class="plan-info">
+                                    <div>
+                                        <ons-icon icon="ion-person"></ons-icon>Hans Moolman
+                                    </div>
+                                </div>
+                            </ons-col>
+
+                            <ons-col width="25%">
+                                <div class="plan-name">Sync defect</div>
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch__input">
+                                        <div class="switch__toggle"></div>
+                                    </label>
+                                </div>
+                            </ons-col>
+                        </ons-row>
+                    </ons-col>
+                </ons-row>
+            </li>
+
+            <li class="list__item">
+                <ons-row>
+                    <ons-col width="80px" class="plan-left">
+                        <div class="plan-date">Patrolled</div>
+                        <div class="plan-duration">06.06.2016</div>
+                    </ons-col>
+
+                    <ons-col width="5px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#7cc343' : '#e5514e'}"></ons-col>
+
+                    <!--ons-col class="plan-right" ng-click="myNavigator.pushPage('sync-patrol-data-submit.html', {animation: 'slide'});" )-->
+                    <ons-col class="plan-right">
+                        <!-- Top row -->
+                        <ons-row class="plan-top-row">
+                            <ons-col width="25%">
+                                <div class="plan-icon">
+                                    <img src="images/graph.png" width="50%" height="auto" onclick="informationModal.show('modal')" />
+                                </div>
+                            </ons-col>
+
+                            <ons-col>
+                                <div class="plan-name">Defect #</div>
+                                <div class="plan-info">
+                                    <div>
+                                        <ons-icon icon="ion-person"></ons-icon>Hans Moolman
+                                    </div>
+                                </div>
+                            </ons-col>
+
+                            <ons-col width="25%">
+                                <div class="plan-name">Sync defect</div>
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch__input">
+                                        <div class="switch__toggle"></div>
+                                    </label>
+                                </div>
+                            </ons-col>
+                        </ons-row>
+                    </ons-col>
+                </ons-row>
+            </li>
+
+            <li class="list__item">
+                <ons-row>
+                    <ons-col width="80px" class="plan-left">
+                        <div class="plan-date">Patrolled</div>
+                        <div class="plan-duration">06.06.2016</div>
+                    </ons-col>
+
+                    <ons-col width="5px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#7cc343' : '#e5514e'}"></ons-col>
+
+                    <!--ons-col class="plan-right" ng-click="myNavigator.pushPage('sync-patrol-data-submit.html', {animation: 'slide'});" )-->
+                    <ons-col class="plan-right">
+                        <!-- Top row -->
+                        <ons-row class="plan-top-row">
+                            <ons-col width="25%">
+                                <div class="plan-icon">
+                                    <img src="images/graph.png" width="50%" height="auto" onclick="informationModal.show('modal')" />
+                                </div>
+                            </ons-col>
+
+                            <ons-col>
+                                <div class="plan-name">Defect #</div>
+                                <div class="plan-info">
+                                    <div>
+                                        <ons-icon icon="ion-person"></ons-icon>Hans Moolman
+                                    </div>
+                                </div>
+                            </ons-col>
+
+                            <ons-col width="25%">
+                                <div class="plan-name">Sync defect</div>
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch__input">
+                                        <div class="switch__toggle"></div>
+                                    </label>
+                                </div>
+                            </ons-col>
+                        </ons-row>
+                    </ons-col>
+                </ons-row>
+            </li>
+
+            <li class="list__item">
+                <ons-row>
+                    <ons-col width="80px" class="plan-left">
+                        <div class="plan-date">Patrolled</div>
+                        <div class="plan-duration">06.06.2016</div>
+                    </ons-col>
+
+                    <ons-col width="5px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#7cc343' : '#e5514e'}"></ons-col>
+
+                    <!--ons-col class="plan-right" ng-click="myNavigator.pushPage('sync-patrol-data-submit.html', {animation: 'slide'});" )-->
+                    <ons-col class="plan-right">
+                        <!-- Top row -->
+                        <ons-row class="plan-top-row">
+                            <ons-col width="25%">
+                                <div class="plan-icon">
+                                    <img src="images/graph.png" width="50%" height="auto" onclick="informationModal.show('modal')" />
+                                </div>
+                            </ons-col>
+
+                            <ons-col>
+                                <div class="plan-name">Defect #</div>
+                                <div class="plan-info">
+                                    <div>
+                                        <ons-icon icon="ion-person"></ons-icon>Hans Moolman
+                                    </div>
+                                </div>
+                            </ons-col>
+
+                            <ons-col width="25%">
+                                <div class="plan-name">Sync defect</div>
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch__input">
+                                        <div class="switch__toggle"></div>
+                                    </label>
+                                </div>
+                            </ons-col>
+                        </ons-row>
+                    </ons-col>
+                </ons-row>
+            </li>
+        </ul>
+
+        <br><br>
+
+        <!-- ******* SHOW THE LIST OF COMPLETED TASKS TO THE USER ONLY WHILE THEY HAVE A INTERNET CONNECTION ******* -->
+        <!--div ng-if="online">
+            <ons-list class="plan-list">
+                <ons-list-item modifier="chevron" class="plan" ng-repeat="a in [1,2,3,4,5,6,7,8,9,10]">
+                    <ons-row>
+                        <ons-col width="80px" class="plan-left">
+                            <div class="plan-date">Assigned</div>
+                            <div class="plan-duration">12.12.2016</div>
+                        </ons-col>
+
+                        <ons-col width="4px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#7cc343' : '#e5514e'}">
+                        </ons-col>
+
+                        <ons-col class="plan-right" ng-click="myNavigator.pushPage('sync-patrol-data-submit.html', {animation: 'slide'});")>
+                            <div class="plan-name">Transformer #</div>
+
+                            <div class="plan-info">
+                                <div>
+                                    <ons-icon icon="ion-flash"></ons-icon>14 Defects
+                                </div>
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                </ons-list-item>
+            </ons-list>
+        </div-->
+        <!-- If the User has NO Internet connection -->
+        <div style="text-align: center" ng-if="!online">
+            <img src="images/information-icon-pink.png" width="12%" height="auto" onclick="noInternetConnectionModal.show('modal')" />
+            <p><small>Online status: <span style="color: #e5514e">OFFLINE</span></small></p>
+
+            <h6>
+                WARNING
+            </h6>
+
+            <p>
+                You need an active Network connection to sync all data. Please make sure you are in a mobile reception coverage area or have Wi-Fi enabled.
+                All sync processes require a constant Network connection.
+            </p>
+        </div>
+
+
+        <!--form class="login-form" style="text-align: center" name="myForm">
+            <section style="padding: 8px">
+                <input type="text"
+                    class="text-input"
+                    required
+                    minlength="1"
+                    maxlength="10"
+                    ng-model-options="{ debounce : 500 }"
+                    placeholder="Fleet Number ID"
+                    ng-model="fleetIDSearch" >
+            </section>
+
+            <br><br>
+
+            <section style="padding: 0 8px 8px">
+                <ons-button var="saveBtn" ng-disabled="myForm.$invalid" modifier="large" onclick="modal.show('modal')">Check</ons-button>
+            </section>
+        </form-->
+        <!--div ng-if="fleetIDResult">
+            <ons-modal var="modal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Please confirm vehicle details</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+
+                            <p>
+                                TLI Fleet Number ID<br>
+                                <strong style="color: #f76327">{{fleetIDSearch}}</strong>
+                            </p>
+
+                            <p ng-repeat="fleetID in fleetIDs">
+                                <strong>Make: </strong>{{fleetID.make}}<br>
+                                <strong>Model: </strong>{{fleetID.model}}<br>
+                                <strong>Reg No: </strong>{{fleetID.regnumber}}<br>
+                                <strong>Type: </strong>{{fleetID.type}}<br>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--one" ng-click="modal.hide()">Cancel</button>
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="myNavigator.pushPage('fleet-service-main-navigation.html', {animation: 'slide'});" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+        </div-->
+        <!--div ng-if="!fleetIDResult">
+            <ons-modal var="modal">
+                <div class="alert-dialog-mask"></div>
+                <div class="alert-dialog">
+                    <div class="alert-dialog-content">
+                        Your vehicle ID <strong style="color: #f76327">{{fleetIDSearch}}</strong> has not been recognised. <br><br>
+                        Please try again.
+                    </div>
+
+                    <div class="alert-dialog-footer">
+                        <button class="alert-dialog-button alert-dialog-button--primal" ng-click="modal.hide()">Try Again</button>
+                    </div>
+                </div>
+            </ons-modal>
+        </div-->
+        <!-- Displays Coming Soon Modal Information Screen -->
+        <ons-modal var="comingSoonInformationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                This feature is currently not available yet.<br><br>
+                                Please check back later for updates.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays Modal Information Screen -->
+        <ons-modal var="informationModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                Choose from any of the <span style="color: #e5514e">completed patrols</span> below to sync the data back to the TLI Management System.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+        <!-- Displays No Internect Connection Modal -->
+        <ons-modal var="noInternetConnectionModal">
+            <div class="alert-dialog-mask"></div>
+
+            <div class="alert-dialog alert-dialog--android">
+                <div class="alert-dialog-title alert-dialog-title--android">
+                    <div style="text-align: center">Information</div>
+                </div>
+
+                <div class="alert-dialog-content alert-dialog-content--android">
+                    <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                        <p>
+                            <small>
+                                You need an <span style="color: #e5514e">active Internect connection</span> to sync patrol data.<br><br>
+                                Please connect to a <span style="color: #e5514e">Wi-Fi</span> hotspot or make sure you are in a <span style="color: #e5514e">mobile reception</span> area.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert-dialog-footer alert-dialog-footer--one">
+                    <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="noInternetConnectionModal.hide()" )>Ok</button>
+                </div>
+            </div>
+        </ons-modal>
+
+    </ons-page>
+</div>
+
+

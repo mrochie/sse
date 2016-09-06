@@ -1,0 +1,368 @@
+﻿<div ng-controller="AdditionalClassAController">
+    <ons-page>
+
+        <!-- Top navigation bar -->
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="myNavigator.popPage({animation: 'slide'});">
+                    <i class="ion-ios-arrow-left" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+
+            <div class="navigation-bar__center">
+                Additional Class A
+            </div>
+
+            <div class="navigation-bar__right" onclick="informationModal.show('modal')">
+                <span class="toolbar-button--quiet navigation-bar__line-height">
+                    <i class="ion-ios-information-outline" style="font-size:32px; vertical-align:-6px;"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroller -->
+        <ons-scroller style="height: 100%; width: 100%">
+
+            <!-- Default Background -->
+            <div class="page-header">
+                <ons-row class="page-header">
+                    <ons-col class="page-header-left" width="30%">
+                        <img src="images/additional-class-a-icon-white-new.png" width="45%">
+                    </ons-col>
+
+                    <ons-col .page-header-right>
+                        <h4 class="page-header-right header">
+                            Additional Class A
+                        </h4>
+                        <p class="page-header-right description">
+                            Select from the details below to complete the Additional Class A form.
+                        </p>
+                        <p class="page-header-right description">
+                            BETA v1.0
+                        </p>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            
+
+            <!-- Form Start -->
+            <form class="login-form" style="text-align: left" name="myForm">
+                <!-- Grid square -->
+                <!-- Dont show the patrol form if no data avalable in localStorage -->
+                <div style="text-align: center" ng-if="!showPatrolForm">
+                    <h6>
+                        ALERT!
+                    </h6>
+                    <p>
+                        There is currently no Patrol data <strong>DOWNLOADED</strong> to this device to display.<br /><br />
+                        Please return to the <strong>MAIN MENU</strong>, make sure you have an active Network connetion and download any assigned patrol data.
+                    </p>
+
+                    <br />
+
+                    <!-- Back to Main Menu -->
+                    <section style="padding: 0 8px 8px; text-align: center">
+                        <br />
+                        <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px;" var="saveBtn" modifier="medium" ng-click="myNavigator.pushPage('main-navigation.html', {animation: 'fade'});">Back to Main Menu</ons-button>
+                    </section>
+                </div>
+
+
+                <!-- Patrol header details -->
+                <section class="form-section" ng-if="showPatrolForm">
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-header">Additional Class A</p>
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Grid Square
+                            </p>
+                            <select ng-model="GridSquareArray.idmap"
+                                    data-ng-options="gridSquare.idmap as gridSquare.mapdesc for gridSquare in GridSquareArray"
+                                    ng-change="changedValue(GridSquareArray.idmap, 'GridSquare')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Transformer
+                            </p>
+                            <select ng-model="TransformerArray.idtransformer"
+                                    ng-options="transformer.idtransformer as transformer.transformerdesc for transformer in TransformerArray | filter:{ mapid : GridSquareArray.idmap }"
+                                    ng-change="changedValue(TransformerArray.idtransformer, 'Transformer')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Pole Number
+                            </p>
+                            <select ng-model="PoleArray.polekey"
+                                    ng-options="poleArray.polekey as poleArray.polekey + ' (' + poleArray.polenum + ')'  for poleArray in PoleArray | filter:{ idtransformer : TransformerArray.idtransformer }"
+                                    ng-change="changedValue(PoleArray.polekey, 'Pole')">
+                                <option value="" label="-- Please Select --"></option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Year
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Year"
+                                      ng-model="year"></textarea>
+                        </ons-col>
+
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Pole Height
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Year"
+                                      ng-model="poleHeight"></textarea>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Grade
+                            </p>
+                            <select ng-model="GradeArray.idgrade"
+                                    data-ng-options="grade.idgrade as grade.gradedesc for grade in GradeArray"
+                                    ng-change="changedValue(GradeArray.idgrade, 'GradeArray')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Type
+                            </p>
+                            <select ng-model="FeatureTypeArray.idfeaturetype"
+                                    data-ng-options="featureType.idfeaturetype as featureType.featuretypedesc for featureType in FeatureTypeArray"
+                                    ng-change="changedValue(FeatureTypeArray.idfeaturetype, 'FeatureTypeArray')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Feature
+                            </p>
+                            <select ng-model="FeatureArray.idfeature"
+                                    data-ng-options="feature.idfeature as feature.featuredesc for feature in FeatureArray"
+                                    ng-change="changedValue(FeatureArray.idfeature, 'FeatureArray')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Cable Type
+                            </p>
+                            <select ng-model="ClassACableTypeArray.idcabletype"
+                                    data-ng-options="classACableType.idcabletype as classACableType.cabletypedesc for classACableType in ClassACableTypeArray"
+                                    ng-change="changedValue(ClassACableTypeArray.idcabletype, 'ClassACableTypeArray')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Size
+                            </p>
+                            <select ng-model="CableSizeArray.idcablesize"
+                                    data-ng-options="cablesize.idcablesize as cablesize.cablesizedesc for cablesize in CableSizeArray"
+                                    ng-change="changedValue(CableSizeArray.idcablesize, 'CableSizeArray')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Feature Height
+                            </p>
+                            <textarea class="textarea"
+                                      rows="1"
+                                      placeholder="Feature height"
+                                      ng-model="featureHeight"></textarea>
+                        </ons-col>
+
+                        <p></p>
+
+                        <ons-col>
+                            <p class="form-field-text">
+                                Measured To
+                            </p>
+                            <select ng-model="MeasuredToArray.idmeasuredsource"
+                                    data-ng-options="measureTo.idmeasuredsource as measureTo.measuredsourcedesc for measureTo in MeasuredToArray"
+                                    ng-change="changedValue(MeasuredToArray.idmeasuredsource, 'MeasuredToArray')">
+                                <option value="">-- Please Select --</option>
+                            </select>
+                        </ons-col>
+                    </ons-row>
+
+                    <br />
+                    
+                    <ons-row>
+                        <ons-col>
+                            <p class="form-field-text">
+                                Additional Class A Photo
+                            </p>
+
+                            <br />
+
+                            <!--<ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" type="submit" modifier="cta"
+                                        onclick="comingSoonInformationModal.show('modal')">
+                                Take photo
+                            </ons-button>-->
+
+                            <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" type="submit" modifier="cta"
+                                        onclick="comingSoonInformationModal.show('modal')">
+                                Take photo
+                            </ons-button>
+
+                           
+                            <br />
+
+                            <div>
+                                <p ng-hide="showme"></p>
+                                <img src="images/pole-example.jpg" ng-show="showme" width="15%" height="auto" />
+                            </div>
+                        </ons-col>
+                    </ons-row>
+
+
+                </section>
+
+                <br /><br />
+
+                <section style="padding: 0 8px 8px" ng-if="showPatrolForm">
+                    <ons-button style="text-shadow: none; font-weight:300" var="saveBtn" modifier="large" ng-click="myNavigator.pushPage('additional-class-a-confirmation.html', {animation: 'fade'});">Submit</ons-button>
+                </section>
+            </form>
+
+            <br /><br />
+
+            
+
+            
+
+            <!-- Displays Modal Information Screen -->
+            <ons-modal var="informationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    Please complete the <span style="color: #e5514e">Additional Class A </span> details below.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="informationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+            <!-- Displays No Internect Connection Modal -->
+            <ons-modal var="noInternetConnectionModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    You need an <span style="color: #e5514e">active Internect connection</span> to sync patrol data.<br><br>
+                                    Please connect to a <span style="color: #e5514e">Wi-Fi</span> hotspot or make sure you are in a <span style="color: #e5514e">mobile reception</span> area.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="noInternetConnectionModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+            <!-- Displays Coming Soon Modal Information Screen -->
+            <ons-modal var="comingSoonInformationModal">
+                <div class="alert-dialog-mask"></div>
+
+                <div class="alert-dialog alert-dialog--android">
+                    <div class="alert-dialog-title alert-dialog-title--android">
+                        <div style="text-align: center">Information</div>
+                    </div>
+
+                    <div class="alert-dialog-content alert-dialog-content--android">
+                        <div style="text-align: center; padding-top: 10px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                            <p>
+                                <small>
+                                    This feature is currently not available.<br><br>
+                                    Please check back later for updates.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert-dialog-footer alert-dialog-footer--one">
+                        <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one" ng-click="comingSoonInformationModal.hide()" )>Ok</button>
+                    </div>
+                </div>
+            </ons-modal>
+
+</ons-page>
+</div>
