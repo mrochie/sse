@@ -211,6 +211,90 @@ gridSquareList.controller("GridSquareListController", function ($scope, $http, $
         //  alert(smallImage.src);
         //updatePhotoISO(smallImage.src);
     }
+    
+     $scope.capturePhotoPC = function (source) {
+        //alert("ISO Photo");
+        // Retrieve image file location from specified source
+        //navigator.camera.getPicture(onPhotoDataSuccessISO, onFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: pictureSource });
+
+        navigator.camera.getPicture(onPhotoDataSuccessPC, onFail, {
+            quality: 75, destinationType: destinationType.FILE_URI, sourceType: Camera.PictureSourceType.CAMERA, encodingType: Camera.EncodingType.JPEG, targetWidth: 500, targetHeight: 500
+        });
+    }
+
+    function onPhotoDataSuccessPC(imageURI) {
+        // Uncomment to view the base64-encoded image data
+        //alert("ISO Photo Success");
+
+        // Get image handle
+        var smallImagePC = document.getElementById('smallImagePC');
+
+        // Unhide image elements
+        smallImagePC.style.display = 'block';
+
+        // Show the captured photo
+        // The in-line CSS rules are used to resize the image
+        //smallImage.src = "data:image/jpeg;base64," + imageData;
+        smallImagePC.src = imageURI;
+        //  alert(smallImage.src);
+        //updatePhotoISO(smallImage.src);
+    }
+    
+     $scope.capturePhotoBT = function (source) {
+        //alert("ISO Photo");
+        // Retrieve image file location from specified source
+        //navigator.camera.getPicture(onPhotoDataSuccessISO, onFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: pictureSource });
+
+        navigator.camera.getPicture(onPhotoDataSuccessBT, onFail, {
+            quality: 75, destinationType: destinationType.FILE_URI, sourceType: Camera.PictureSourceType.CAMERA, encodingType: Camera.EncodingType.JPEG, targetWidth: 500, targetHeight: 500
+        });
+    }
+
+    function onPhotoDataSuccessBT(imageURI) {
+        // Uncomment to view the base64-encoded image data
+        //alert("ISO Photo Success");
+
+        // Get image handle
+        var smallImageBT = document.getElementById('smallImageBT');
+
+        // Unhide image elements
+        smallImageBT.style.display = 'block';
+
+        // Show the captured photo
+        // The in-line CSS rules are used to resize the image
+        //smallImage.src = "data:image/jpeg;base64," + imageData;
+        smallImageBT.src = imageURI;
+        //  alert(smallImage.src);
+        //updatePhotoISO(smallImage.src);
+    }
+    
+     $scope.capturePhotoT = function (source) {
+        //alert("ISO Photo");
+        // Retrieve image file location from specified source
+        //navigator.camera.getPicture(onPhotoDataSuccessISO, onFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: pictureSource });
+
+        navigator.camera.getPicture(onPhotoDataSuccessT, onFail, {
+            quality: 75, destinationType: destinationType.FILE_URI, sourceType: Camera.PictureSourceType.CAMERA, encodingType: Camera.EncodingType.JPEG, targetWidth: 500, targetHeight: 500
+        });
+    }
+
+    function onPhotoDataSuccessT(imageURI) {
+        // Uncomment to view the base64-encoded image data
+        //alert("ISO Photo Success");
+
+        // Get image handle
+        var smallImageT = document.getElementById('smallImageT');
+
+        // Unhide image elements
+        smallImageT.style.display = 'block';
+
+        // Show the captured photo
+        // The in-line CSS rules are used to resize the image
+        //smallImage.src = "data:image/jpeg;base64," + imageData;
+        smallImageT.src = imageURI;
+        //  alert(smallImage.src);
+        //updatePhotoISO(smallImage.src);
+    }
 
     // Called if something bad happens.
     function onFail(message) {

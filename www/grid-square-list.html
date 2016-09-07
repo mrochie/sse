@@ -543,16 +543,18 @@
                             </p>
 
                             <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" type="submit" modifier="cta"
-                                        onclick="comingSoonInformationModal.show('modal')">
+                                        ng-click="capturePhotoPC('IsolationPointPhoto')">
                                 Take photo
                             </ons-button>
 
+                           <!-- <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" type="submit" modifier="cta"
+                                        onclick="comingSoonInformationModal.show('modal')">
+                                Take photo
+                            </ons-button> -->
+                            
                             <br />
-
-                            <div>
-                                <p ng-hide="showme"></p>
-                                <img src="images/pole-example.jpg" ng-show="showme" width="15%" height="auto" />
-                            </div>
+                            <img style="display:none;width:60px;height:60px;" id="smallImagePC" src="" />
+                            <!--img style="display:none; margin-top: 20px; width: 150px; height: 150px" id="smallImage" src="" -->
                         </ons-col>
                     </ons-row>
 
@@ -918,21 +920,49 @@
                                     ng-change="changedTasksValue(BTTransferArray.idbttransfer, '1')">
                                 <option value="" label="-- Please Select --"></option>
                             </select>
+                            <br/>
+                            <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" type="submit" modifier="cta"
+                                        ng-click="capturePhotoBT('IsolationPointPhoto')">
+                                Take photo
+                            </ons-button>
+
+                           <!-- <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" type="submit" modifier="cta"
+                                        onclick="comingSoonInformationModal.show('modal')">
+                                Take photo
+                            </ons-button> -->
+                            
+                            <br />
+                            <img style="display:none;width:60px;height:60px;" id="smallImageBT" src="" />
+                            <!--img style="display:none; margin-top: 20px; width: 150px; height: 150px" id="smallImage" src="" -->
                         </ons-col>
 
                         <p></p>
 
                         <!-- Re-plumb pole -->
                         <ons-col>
-                            <p class="form-field-text">
-                                Re-plumb pole
+                        
+                         <p class="form-field-text">
+                                Tree cutting
                             </p>
-                            <select id="country" name="duration"
-                                    ng-model="replumbPole.yesnooptionid"
-                                    ng-options="replumbPoleOption.yesnooptionid as replumbPoleOption.yesnooptiondesc for replumbPoleOption in YesNoOption"
-                                    ng-change="changedTasksValue(replumbPole.yesnooptionid, '2')">
+                            <select ng-model="TreeCuttingArray.idtreecutting"
+                                    ng-options="treeCuttingOption.idtreecutting as treeCuttingOption.treecuttingdesc for treeCuttingOption in TreeCuttingArray"
+                                    ng-change="changedTasksValue(TreeCuttingArray.idtreecutting, '22')">
                                 <option value="" label="-- Please Select --"></option>
                             </select>
+                             <br/>
+                            <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" type="submit" modifier="cta"
+                                        ng-click="capturePhotoT('IsolationPointPhoto')">
+                                Take photo
+                            </ons-button>
+
+                           <!-- <ons-button style="text-shadow: none; font-weight:300; padding-left: 40px; padding-right: 40px" type="submit" modifier="cta"
+                                        onclick="comingSoonInformationModal.show('modal')">
+                                Take photo
+                            </ons-button> -->
+                            
+                            <br />
+                            <img style="display:none;width:60px;height:60px;" id="smallImageT" src="" />
+                          
                         </ons-col>
                     </ons-row>
 
@@ -1218,12 +1248,13 @@
                     <ons-row>
                         <!-- Tree cutting -->
                         <ons-col>
-                            <p class="form-field-text">
-                                Tree cutting
+                              <p class="form-field-text">
+                                Re-plumb pole
                             </p>
-                            <select ng-model="TreeCuttingArray.idtreecutting"
-                                    ng-options="treeCuttingOption.idtreecutting as treeCuttingOption.treecuttingdesc for treeCuttingOption in TreeCuttingArray"
-                                    ng-change="changedTasksValue(TreeCuttingArray.idtreecutting, '22')">
+                            <select id="country" name="duration"
+                                    ng-model="replumbPole.yesnooptionid"
+                                    ng-options="replumbPoleOption.yesnooptionid as replumbPoleOption.yesnooptiondesc for replumbPoleOption in YesNoOption"
+                                    ng-change="changedTasksValue(replumbPole.yesnooptionid, '2')">
                                 <option value="" label="-- Please Select --"></option>
                             </select>
                         </ons-col>
